@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="As 175 skills do Estúdio de Marketing e Redes Sociais: para que serve cada uma, o comando para chamar e um exemplo de pedido.">
+<meta name="robots" content="noindex">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Skills do Estúdio de Marketing</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+/* Layout: cabeçalho com a anatomia de um comando; barra de busca fixa; trilho de etapas à esquerda e lista de skills à direita. */
+:root {
+  --bg: #f2f5f4; --surface: #ffffff; --sunken: #e8edeb;
+  --ink: #15201e; --muted: #56655f; --line: #d5dcd9;
+  --accent: #0c6a5b; --accent-ink: #ffffff; --accent-soft: #dcefe9;
+  --p-e: #15201e; --p-s: #ad2c66; --p-m: #2553c9; --p-p: #9a5a00;
+  --warn-bg: #fbecd2; --warn-fg: #7a4700;
+  --fav: #c98a00;
+  --f-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --f-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --tb-h: 120px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1514; --surface: #172020; --sunken: #1f2a29;
+    --ink: #e7eeeb; --muted: #9aaaa5; --line: #2b3836;
+    --accent: #52c4ae; --accent-ink: #06231d; --accent-soft: #17332e;
+    --p-e: #e7eeeb; --p-s: #f286b5; --p-m: #8fadff; --p-p: #f0b65a;
+    --warn-bg: #3a2c12; --warn-fg: #f3c77a;
+    --fav: #f0b93a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1514; --surface: #172020; --sunken: #1f2a29;
+  --ink: #e7eeeb; --muted: #9aaaa5; --line: #2b3836;
+  --accent: #52c4ae; --accent-ink: #06231d; --accent-soft: #17332e;
+  --p-e: #e7eeeb; --p-s: #f286b5; --p-m: #8fadff; --p-p: #f0b65a;
+  --warn-bg: #3a2c12; --warn-fg: #f3c77a;
+  --fav: #f0b93a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.5; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.wrap { max-width: 1200px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+code, .mono { font-family: var(--f-mono); }
+
+/* Cabeçalho */
+header.top { padding-block: 28px 20px; }
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+h1 { font-family: var(--f-display); font-weight: 700; font-size: clamp(26px, 4.2vw, 40px); line-height: 1.1; margin: 6px 0 10px; text-wrap: balance; letter-spacing: -.01em; }
+.lede { max-width: 66ch; color: var(--muted); margin: 0; font-size: 16px; }
+.lede b { color: var(--ink); font-weight: 600; }
+.head-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 22px; }
+@media (max-width: 860px) { .head-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; } }
+
+/* Anatomia do comando */
+.anatomy { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 16px 14px; min-width: 0; }
+.anatomy h2 { font-family: var(--f-display); font-size: 15px; margin: 0 0 12px; font-weight: 600; }
+.cmdline { display: flex; flex-wrap: wrap; gap: 6px 2px; align-items: flex-start; font-family: var(--f-mono); font-size: 14px; }
+.part { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.part > span { padding: 5px 2px; border-bottom: 2px solid var(--line); overflow-wrap: anywhere; }
+.part > small { font-family: var(--f-body); font-size: 11px; color: var(--muted); letter-spacing: .03em; }
+.part.slash > span { color: var(--muted); }
+.part.plug > span { color: var(--p-s); border-color: var(--p-s); font-weight: 500; }
+.part.skill > span { font-weight: 700; border-color: var(--ink); }
+.part.ask > span { color: var(--muted); padding-left: 10px; border-bottom-style: dashed; font-family: var(--f-body); font-size: 14px; }
+.part.ask > small { padding-left: 10px; }
+.notes { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 7px; font-size: 13.5px; color: var(--muted); }
+.notes li { padding-left: 16px; position: relative; }
+.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; background: var(--accent); border-radius: 1px; }
+.notes b, .notes code { color: var(--ink); }
+.notes code { font-size: 12.5px; overflow-wrap: anywhere; }
+
+/* Plugins */
+.plugins { display: grid; gap: 8px; min-width: 0; }
+.plug-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; align-items: baseline; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.plug-row:last-child { border-bottom: 0; }
+.dot { width: 9px; height: 9px; border-radius: 2px; display: inline-block; flex: none; }
+.d-E { background: var(--p-e); } .d-S { background: var(--p-s); } .d-M { background: var(--p-m); } .d-P { background: var(--p-p); }
+.plug-row .name { font-weight: 600; }
+.plug-row .name code { display: block; font-size: 12px; font-weight: 400; color: var(--muted); overflow-wrap: anywhere; }
+.plug-row .what { display: block; font-size: 13px; color: var(--muted); font-weight: 400; }
+.plug-row .n { font-family: var(--f-display); font-weight: 700; font-size: 20px; font-variant-numeric: tabular-nums; }
+
+/* Abas */
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-top: 26px; overflow-x: auto; }
+.tab { background: none; border: 0; border-bottom: 2px solid transparent; padding: 10px 14px; font-weight: 600; color: var(--muted); white-space: nowrap; margin-bottom: -1px; }
+.tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.tab .ct { font-weight: 500; color: var(--muted); font-variant-numeric: tabular-nums; margin-left: 4px; }
+
+/* Barra de busca e filtros */
+.toolbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 12px 10px; border-bottom: 1px solid var(--line); }
+.tb-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.search { flex: 1 1 260px; min-width: 0; position: relative; }
+.search input { width: 100%; padding: 10px 12px 10px 36px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); font-size: 15px; }
+.search svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; stroke: var(--muted); fill: none; stroke-width: 2; }
+.sel { padding: 9px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); max-width: 100%; }
+.chips { display: flex; gap: 6px; overflow-x: auto; padding-top: 10px; scrollbar-width: none; }
+.chips::-webkit-scrollbar { display: none; }
+.chip { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 5px 12px; font-size: 13px; font-weight: 500; white-space: nowrap; color: var(--muted); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip .ct { font-variant-numeric: tabular-nums; opacity: .75; }
+.count { font-size: 13px; color: var(--muted); padding-top: 8px; font-variant-numeric: tabular-nums; }
+.count button { background: none; border: 0; color: var(--accent); text-decoration: underline; padding: 0; margin-left: 6px; }
+
+/* Corpo: trilho + lista */
+.body { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 28px; padding-block: 18px 60px; align-items: start; }
+.rail { position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--tb-h) + 14px); max-height: calc(100vh - var(--tb-h) - 40px); overflow-y: auto; display: grid; gap: 1px; padding-right: 4px; }
+.rail button { display: flex; justify-content: space-between; gap: 8px; width: 100%; text-align: left; background: none; border: 0; padding: 6px 8px; border-radius: 6px; font-size: 13.5px; color: var(--muted); }
+.rail button:hover { background: var(--sunken); color: var(--ink); }
+.rail button.on { color: var(--ink); font-weight: 600; background: var(--accent-soft); }
+.rail button span:last-child { font-variant-numeric: tabular-nums; font-size: 12px; }
+.rail button[disabled] { opacity: .35; cursor: default; }
+@media (max-width: 900px) {
+  .body { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .rail { position: static; max-height: none; display: flex; overflow-x: auto; overflow-y: hidden; gap: 6px; padding: 0 0 6px; }
+  .rail button { width: auto; white-space: nowrap; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 5px 11px; flex: none; }
+}
+.list { min-width: 0; display: grid; gap: 26px; }
+
+/* Grupo */
+.group { min-width: 0; scroll-margin-top: calc(env(safe-area-inset-top, 0px) + var(--tb-h) + 14px); }
+.group > header { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+.group h2 { font-family: var(--f-display); font-size: 19px; font-weight: 600; margin: 0; }
+.group .gct { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.group .hint { font-size: 13.5px; color: var(--muted); flex-basis: 100%; margin: 0; max-width: 70ch; }
+.rows { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+
+/* Linha de skill */
+.row { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; gap: 4px 10px; padding: 12px 14px 12px 10px; border-bottom: 1px solid var(--line); align-items: start; }
+.row:last-child { border-bottom: 0; }
+.fav { background: none; border: 0; padding: 2px; line-height: 0; margin-top: 1px; }
+.fav svg { width: 18px; height: 18px; fill: none; stroke: var(--line); stroke-width: 1.8; stroke-linejoin: round; }
+.fav:hover svg { stroke: var(--fav); }
+.fav[aria-pressed="true"] svg { fill: var(--fav); stroke: var(--fav); }
+.main { min-width: 0; display: grid; gap: 4px; }
+.cmd { font-family: var(--f-mono); font-size: 13.5px; overflow-wrap: anywhere; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
+.cmd .c { min-width: 0; overflow-wrap: anywhere; }
+.cmd .pre { font-weight: 500; }
+.pre.p-E { color: var(--muted); } .pre.p-S { color: var(--p-s); } .pre.p-M { color: var(--p-m); } .pre.p-P { color: var(--p-p); }
+.cmd .sk { font-weight: 700; color: var(--ink); }
+.pill { font-family: var(--f-body); font-size: 11.5px; font-weight: 600; padding: 1px 8px; border-radius: 999px; white-space: nowrap; letter-spacing: .01em; }
+.pill.start { background: var(--accent-soft); color: var(--accent); }
+.pill.need { background: var(--warn-bg); color: var(--warn-fg); }
+.pill.ext { background: var(--sunken); color: var(--muted); }
+.desc { margin: 0; max-width: 78ch; }
+.ex { margin: 0; font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+.ex button { background: none; border: 0; padding: 0; text-align: left; color: inherit; font-family: var(--f-mono); font-size: 12.5px; border-bottom: 1px dashed var(--line); overflow-wrap: anywhere; }
+.ex button:hover { color: var(--ink); border-bottom-color: var(--muted); }
+.copy { border: 1px solid var(--line); background: var(--bg); border-radius: 7px; padding: 5px 11px; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.copy:hover { border-color: var(--accent); color: var(--accent); }
+.copy.done { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+@media (max-width: 560px) {
+  .row { grid-template-columns: 24px minmax(0, 1fr); }
+  .copy { grid-column: 2; justify-self: start; }
+}
+.empty { background: var(--surface); border: 1px dashed var(--line); border-radius: 10px; padding: 28px 18px; text-align: center; color: var(--muted); }
+.empty button { margin-top: 10px; border: 1px solid var(--line); background: var(--bg); border-radius: 7px; padding: 6px 12px; font-weight: 600; }
+
+/* Fluxos */
+.panel { padding-block: 22px 60px; }
+.panel > p.intro { color: var(--muted); max-width: 70ch; margin: 0 0 18px; }
+.flows { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 16px; }
+.flow { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; min-width: 0; }
+.flow h3 { font-family: var(--f-display); font-size: 17px; margin: 0 0 2px; font-weight: 600; }
+.flow .when { color: var(--muted); font-size: 13.5px; margin: 0 0 12px; }
+.flow ol { margin: 0; padding: 0; list-style: none; counter-reset: st; display: grid; gap: 8px; }
+.flow li { counter-increment: st; display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 8px; font-size: 14px; }
+.flow li::before { content: counter(st); font-family: var(--f-display); font-weight: 600; font-size: 12px; color: var(--muted); border: 1px solid var(--line); border-radius: 50%; width: 22px; height: 22px; display: grid; place-items: center; font-variant-numeric: tabular-nums; }
+.flow li.gate::before { content: "!"; background: var(--warn-bg); color: var(--warn-fg); border-color: transparent; font-weight: 700; }
+.flow li.gate { color: var(--warn-fg); font-weight: 600; }
+.flow li > div { min-width: 0; }
+.kbtn { display: inline-block; font-family: var(--f-mono); font-size: 12px; background: var(--sunken); border: 0; border-radius: 5px; padding: 2px 7px; margin: 3px 4px 0 0; overflow-wrap: anywhere; text-align: left; }
+.kbtn:hover { background: var(--accent-soft); color: var(--accent); }
+
+/* Desempate */
+.tblwrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
+table { border-collapse: collapse; width: 100%; min-width: 720px; font-size: 14px; }
+th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; background: var(--sunken); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-weight: 600; white-space: nowrap; }
+
+.toast { position: fixed; left: 50%; bottom: calc(22px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 9px 16px; border-radius: 8px; font-size: 14px; font-weight: 500; z-index: 20; max-width: calc(100vw - 32px); overflow-wrap: anywhere; }
+footer.wrap { color: var(--muted); font-size: 12.5px; padding-block: 0 40px; }
+@media (prefers-reduced-motion: no-preference) { .copy, .chip, .rail button { transition: background-color .12s, color .12s, border-color .12s; } }
+</style>
+</head>
+<body>
+
+<header class="top wrap">
+  <div class="eyebrow">Claude Code · 4 plugins · <span id="total-skills">175</span> skills</div>
+  <h1>Skills do Estúdio de Marketing e Redes Sociais</h1>
+  <p class="lede">O que cada skill faz e o comando para chamá-la. <b>Não sabe por onde começar?</b> Use o orquestrador: ele escolhe as skills por você.</p>
+
+  <div class="head-grid">
+    <section class="anatomy" aria-label="Como chamar uma skill">
+      <h2>Como chamar uma skill</h2>
+      <div class="cmdline" aria-label="Exemplo de comando">
+        <div class="part slash"><span>/</span><small>barra</small></div>
+        <div class="part plug"><span>social-media-skills</span><small>plugin</small></div>
+        <div class="part slash"><span>:</span><small>&nbsp;</small></div>
+        <div class="part skill"><span>carousel-writer</span><small>skill</small></div>
+        <div class="part ask"><span>carrossel sobre café coado para o Instagram</span><small>seu pedido, em português</small></div>
+      </div>
+      <ul class="notes">
+        <li>Digite na caixa de mensagem do Claude Code. Os plugins aparecem em <b>sessão nova</b>.</li>
+        <li>Use sempre o <b>nome completo</b>, com o plugin na frente: há nomes repetidos.</li>
+        <li>Na dúvida: <code>/estudio-marketing-social:estudio</code> e o que você precisa.</li>
+      </ul>
+    </section>
+    <section class="plugins" aria-label="Os quatro plugins" id="plugins"></section>
+  </div>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" id="tab-skills" data-view="skills" aria-selected="true">Skills <span class="ct" id="ct-skills"></span></button>
+    <button class="tab" role="tab" id="tab-fluxos" data-view="fluxos" aria-selected="false">Fluxos prontos <span class="ct" id="ct-fluxos"></span></button>
+    <button class="tab" role="tab" id="tab-desempate" data-view="desempate" aria-selected="false">Qual das duas usar? <span class="ct" id="ct-desempate"></span></button>
+  </div>
+</header>
+
+<div id="view-skills">
+  <div class="toolbar" id="toolbar">
+    <div class="wrap">
+      <div class="tb-row">
+        <label class="search" for="q">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <input id="q" type="search" placeholder="Buscar: carrossel, concorrentes, SEO, TikTok, e-mail…" autocomplete="off" aria-label="Buscar skill">
+        </label>
+        <select class="sel" id="avail" aria-label="Disponibilidade">
+          <option value="all">Todas as skills</option>
+          <option value="now">Funcionam agora, sem conta</option>
+          <option value="need">Pedem chave ou conta</option>
+          <option value="ext">Usam ferramenta externa</option>
+        </select>
+      </div>
+      <div class="chips" id="chips" role="group" aria-label="Filtrar por plugin"></div>
+      <div class="count" id="count" aria-live="polite"></div>
+    </div>
+  </div>
+  <div class="wrap body">
+    <nav class="rail" id="rail" aria-label="Etapas"></nav>
+    <main class="list" id="list"></main>
+  </div>
+</div>
+
+<div id="view-fluxos" class="wrap panel" hidden>
+  <p class="intro">Sequências que o orquestrador segue nos casos mais comuns. Você pode pedir o fluxo inteiro a ele ou chamar cada skill na ordem. Os passos marcados com <b>!</b> são portões: o trabalho para e espera a sua aprovação.</p>
+  <div class="flows" id="flows"></div>
+</div>
+
+<div id="view-desempate" class="wrap panel" hidden>
+  <p class="intro">Os três repositórios têm skills parecidas. Esta é a regra que o orquestrador usa para escolher. Abreviações: SMS = social-media-skills, MKT = marketing-skills, PESQ = social-media-research-skills.</p>
+  <div class="tblwrap"><table id="tie"><thead><tr><th>Assunto</th><th>Use</th><th>Em vez de</th><th>Quando inverter</th></tr></thead><tbody></tbody></table></div>
+</div>
+
+<footer class="wrap">Catálogo de 23/11/2026. Descrições resumidas em português a partir dos originais em inglês; o método completo está no arquivo de cada skill.</footer>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+const PLUGINS = {
+  E: { id: "estudio-marketing-social", label: "Orquestrador", what: "Escolhe e conduz as outras skills" },
+  S: { id: "social-media-skills", label: "Redes sociais", what: "Conteúdo, formatos, plataformas, publicação" },
+  M: { id: "marketing-skills", label: "Marketing", what: "Posicionamento, site, SEO, anúncios, e-mail, vendas" },
+  P: { id: "social-media-research-skills", label: "Pesquisa", what: "Dados públicos das redes (pede chave)" }
+};
+
+const GROUPS = [
+  ["inicio", "Comece por aqui", "O orquestrador. Descreva o que precisa e ele escolhe as skills, na ordem certa."],
+  ["contexto", "Contexto da marca", "Feito uma vez por cliente. Todas as outras skills leem estes arquivos antes de trabalhar."],
+  ["pesquisa", "Pesquisa e evidência", "O que funciona no nicho, o que o público diz e o que o concorrente faz."],
+  ["estrategia", "Estratégia e plano", "Onde estar, sobre o que falar, o que medir, quanto cobrar."],
+  ["calendario", "Calendário, campanhas e lançamentos", "Do ritmo semanal ao arco de um lançamento."],
+  ["angulos", "Ideias e ângulos de conteúdo", "Tipos de conteúdo: cada skill é um jeito de abordar um assunto."],
+  ["texto", "Texto de posts", "Comece pelo gancho e siga para a skill do formato."],
+  ["video", "Roteiro de vídeo e áudio", "Roteiros para gravar com gente de verdade."],
+  ["visual", "Imagem e design", "Briefing visual, templates e prompts para geradores de imagem."],
+  ["ia", "Vídeo, voz e música com IA", "A skill escreve o briefing e o prompt; a ferramenta gera. Geração paga pede sua aprovação."],
+  ["edicao", "Edição e cortes", "Editar vídeo curto e transformar vídeo longo em cortes."],
+  ["plataformas", "Crescimento por plataforma", "O manual de cada rede: onde o crescimento está travado e o que fazer."],
+  ["descoberta", "Descoberta: hashtags e busca", "Ser encontrado na busca das redes, do Google e das IAs."],
+  ["publicar", "Publicar e agendar", "Conferir formato e colocar no ar. Nada é publicado sem a sua aprovação."],
+  ["comunidade", "Comunidade e relacionamento", "Responder, engajar, moderar e lidar com crise."],
+  ["site", "Site, copy e conversão", "Páginas que convertem e fluxos de cadastro e ativação."],
+  ["seo", "SEO e busca por IA", "Aparecer no Google, nas respostas das IAs e nas lojas de aplicativo."],
+  ["email", "E-mail, mensagens e funil", "Levar o seguidor até a lista, a conversa e a compra."],
+  ["pago", "Anúncios", "Estrutura de campanha, criativos e rastreamento. A verba é decisão sua."],
+  ["criadores", "Criadores, influência e parcerias", "Programas com influenciadores, UGC e colaborações."],
+  ["medicao", "Medição e testes", "Ler resultado, atribuir venda e testar com rigor."],
+  ["reaproveitar", "Reaproveitar conteúdo", "Uma peça vira várias; o que deu certo volta."],
+  ["vendas", "Vendas, retenção e receita", "Depois da captação: vender, reter e organizar a operação de receita."]
+];
+
+/* [grupo, plugin, skill, para que serve, exemplo de pedido, requisito, é a entrada da etapa]
+   requisito: "" | "sc" (chave ScrapeCreators) | "woop" (WoopSocial) | "ext:Ferramenta" */
+const SKILLS = [
+["inicio","E","estudio","Porta de entrada. Você descreve o que precisa; ele acha o projeto do cliente, escolhe as skills certas, conduz a etapa e para para pedir sua aprovação.","monta o calendário de dezembro da Padaria Aurora","",1],
+["inicio","E","novo-projeto","Abre a pasta de um cliente novo, aproveita o projeto de marca que já existir e monta o contexto que todas as outras skills leem.","Padaria Aurora, o brand book está na pasta marca/","",0],
+["inicio","E","base-de-conhecimento","Mostra o que o estúdio tem: regras, qual skill usar em cada etapa, fluxos prontos e o catálogo completo.","qual skill uso para carrossel no LinkedIn?","",0],
+
+["contexto","M","product-marketing","Cria ou atualiza o documento de contexto de marketing: produto, cliente ideal, posicionamento e concorrentes. As skills de marketing leem esse arquivo primeiro.","monta o contexto de marketing da marca","",1],
+["contexto","S","brand-profile","Cria o perfil de marca para as redes: quem é, a quem serve, como soa e o que não diz. Rode antes de qualquer outra skill de redes sociais.","configura o perfil de marca do cliente","",1],
+["contexto","S","voice-builder","Monta um guia de voz a partir de textos reais da pessoa ou da marca, para os posts soarem como ela e não como IA.","analisa estes 10 posts e monta o guia de voz","",0],
+["contexto","S","writing-style-and-tone","Técnica de escrita aplicada: ritmo, especificidade, modulação de tom e como tirar do texto a cara de genérico.","deixa este texto menos genérico e mais com a nossa cara","",0],
+["contexto","S","audience-research","Aprofunda quem é o público: o que ele quer resolver, dores, objeções e as palavras que usa de verdade. Gera o arquivo de público.","para quem a marca cria conteúdo?","",0],
+
+["pesquisa","M","customer-research","Conduz ou sintetiza pesquisa com clientes: o que citações, avaliações e feedbacks revelam e como usar isso no marketing.","sintetiza estas 40 avaliações de clientes","",1],
+["pesquisa","P","competitor-social-research","Pesquisa a estratégia dos concorrentes nas redes com dados públicos: compara marcas ou criadores e mostra o que funciona para cada um.","compara @marcaA, @marcaB e @marcaC no Instagram","sc",1],
+["pesquisa","P","outlier-post-finder","Acha posts e vídeos que performaram muito acima da média de uma conta ou de um nicho.","quais posts de café especial estouraram este mês?","sc",1],
+["pesquisa","P","trend-discovery","Descobre temas, hashtags, sons, formatos e criadores em alta numa rede ou num nicho.","o que está em alta no TikTok sobre skincare?","sc",0],
+["pesquisa","P","comment-mining","Garimpa comentários e respostas para extrair reações, linguagem do cliente, perguntas e objeções.","o que o público comenta nos vídeos de @conta?","sc",0],
+["pesquisa","P","social-listening-brief","Relatório de escuta: o que as pessoas estão dizendo sobre uma marca, pessoa, produto ou tema.","o que estão falando da marca nas redes?","sc",0],
+["pesquisa","P","product-demand-research","Valida uma ideia de produto: dores, sinais de demanda e objeções encontrados nas conversas das redes.","existe demanda para marmita fitness por assinatura?","sc",0],
+["pesquisa","P","transcript-intelligence","Resume, analisa ou reaproveita transcrições de vídeos do TikTok, Instagram, YouTube, Facebook e outras redes.","analisa a transcrição destes 5 vídeos","sc",0],
+["pesquisa","P","creator-profile-teardown","Desmonta o perfil de um criador, fundador ou marca: posicionamento, formatos e o que sustenta o resultado.","analisa o perfil de @criador","sc",0],
+["pesquisa","P","audience-research","Avalia a audiência de um criador ou de uma marca por sinais públicos do perfil. Algumas consultas custam muitos créditos.","a audiência de @criador combina com a marca?","sc",0],
+["pesquisa","P","influencer-prospecting","Acha criadores, afiliados e contas de um nicho para abordagem e parceria.","20 criadores de culinária com até 100 mil seguidores","sc",0],
+["pesquisa","P","ad-library-teardown","Analisa os anúncios ativos nas bibliotecas da Meta, do Google e do LinkedIn e desmonta a estratégia de quem anuncia.","que anúncios a marca X está rodando?","sc",0],
+["pesquisa","P","scrapecreators-api","Acesso direto à API da ScrapeCreators para extrair dados públicos de mais de 27 plataformas. Use quando nenhuma skill de pesquisa cobre o caso.","puxa os últimos 30 posts de @conta","sc",0],
+["pesquisa","M","competitor-profiling","Monta perfis datados dos concorrentes: quanto cobram, o que prometem e o que estão fazendo.","perfil dos 3 principais concorrentes","",0],
+["pesquisa","M","reverse-engineer-marketing","Reconstrói como outra empresa cresceu e aponta as jogadas que valem copiar.","como a marca X cresceu e o que dá para copiar?","",0],
+["pesquisa","S","competitor-analysis","Lê o que os concorrentes fazem de público nas redes para achar o espaço que a marca pode ocupar. Funciona sem chave, com links e capturas.","onde os concorrentes deixam espaço?","",0],
+["pesquisa","S","content-audit","Auditoria da conta e do conteúdo atual: o que manter, o que cortar e o que refazer.","audita o Instagram do cliente","",0],
+["pesquisa","S","viral-reverse-engineering","Explica por que um conteúdo estourou, seu ou de outra conta, e extrai o padrão que dá para repetir.","por que este Reels estourou?","",0],
+["pesquisa","S","content-research-and-sourcing","Checa a substância de uma peça antes de publicar: rastreia cada dado até a fonte primária.","confere os números deste carrossel","",0],
+
+["estrategia","M","marketing-plan","Plano completo de marketing ou de entrada no mercado, para um cliente ou para produto próprio.","plano de marketing de 6 meses","",1],
+["estrategia","S","social-strategy","Define a estratégia de redes: em quais canais focar, quais ignorar e o que fazer em cada um.","em quais redes a marca deve estar?","",1],
+["estrategia","S","content-pillars","Define os 3 a 5 temas recorrentes sobre os quais a marca posta. É a ponte entre o perfil de marca e o calendário.","define os pilares de conteúdo","",0],
+["estrategia","S","goals-and-kpis","Define metas e indicadores mensuráveis, sem métrica de vaidade.","metas de redes sociais para o trimestre","",0],
+["estrategia","S","profile-optimization","Otimiza o perfil para transformar visitante em seguidor e seguidor em contato: bio, nome, link e destaques.","melhora a bio e o perfil do Instagram","",0],
+["estrategia","M","content-strategy","Planeja conteúdo de site e blog: que tema priorizar e por que as peças atuais não rendem.","o que escrever no blog nos próximos 3 meses?","",0],
+["estrategia","M","marketing-ideas","Ideias e táticas de crescimento a partir de um banco de 140 ideias, pensado para software.","ideias para ganhar atenção sem verba","",0],
+["estrategia","M","marketing-psychology","Aplica psicologia e modelos mentais ao marketing: por que o comprador age e valoriza as coisas como faz.","que princípios usar na página de preços?","",0],
+["estrategia","M","marketing-council","Reúne a opinião de vários especialistas de marketing sobre uma decisão difícil.","baixo o preço ou crio um plano menor?","",0],
+["estrategia","M","offers","Desenha ou melhora a oferta em si: por que não está vendendo e como dar urgência de forma legítima.","por que a oferta não está vendendo?","",0],
+["estrategia","M","pricing","Preço, pacotes e monetização: quanto cobrar e se é hora de aumentar.","quanto cobrar pelo plano anual?","",0],
+["estrategia","M","marketing-loops","Desenha rotinas recorrentes de marketing para um agente executar em cadência.","rotina semanal de monitoramento de concorrentes","",0],
+
+["calendario","S","content-calendar","Monta o calendário: um ritmo sustentável de postagem, com pilares e formatos definidos por dia.","calendário semanal para Instagram e LinkedIn","",1],
+["calendario","S","batch-content-plan","Planeja e produz de uma vez o lote de conteúdo de uma semana ou de um mês.","lote de posts de dezembro","",0],
+["calendario","S","seasonal-and-moment-marketing","Mapeia as poucas datas sazonais, culturais e comerciais do ano que realmente servem à marca.","datas do primeiro semestre que fazem sentido para nós","",0],
+["calendario","S","campaign-and-launch-planning","Planeja uma campanha ou um lançamento nas redes de ponta a ponta: o arco de semanas, canal por canal.","campanha de 4 semanas para o lançamento","",0],
+["calendario","M","launch","Planeja o lançamento de um produto ou recurso: se está pronto, quando anunciar e como.","plano de lançamento do novo produto","",1],
+["calendario","M","public-relations","Imprensa e mídia espontânea: o que é notícia e o que dizer ao jornalista.","pauta e abordagem para a imprensa local","",0],
+["calendario","M","events","Planejar, realizar, patrocinar ou palestrar em eventos e webinars, e avaliar se o custo compensa.","vale patrocinar este evento?","",0],
+["calendario","M","co-marketing","Acha parceiros e desenha campanhas conjuntas.","marcas parceiras para uma ação conjunta","",0],
+
+["angulos","S","idea-generation-and-ideation","Sistema para nunca ficar sem ideia de conteúdo, em vez de esperar a inspiração.","30 ideias de post a partir dos pilares","",1],
+["angulos","S","educational-content-and-how-to","Conteúdo que ensina: escolhe um tema útil e ensina uma coisa só, por inteiro.","post ensinando a escolher um bom café","",0],
+["angulos","S","storytelling-and-narrative","Aplica estrutura de história (tensão, transformação, desfecho) a qualquer conteúdo.","conta a história da fundação da marca","",0],
+["angulos","S","contrarian-and-opinion","Conteúdo de opinião: articula e defende uma posição própria, contrária ao senso comum.","post de opinião sobre o mito do café forte","",0],
+["angulos","S","before-after-and-transformation","Antes e depois: estrutura uma transformação crível e honesta.","antes e depois da reforma da loja","",0],
+["angulos","S","social-proof-and-testimonials","Transforma avaliações, depoimentos e casos reais de clientes em conteúdo de prova.","post com o depoimento da cliente Marina","",0],
+["angulos","S","listicle-and-roundup","Listas e seleções do tipo '7 formas de…', com curadoria honesta e fáceis de escanear.","7 erros ao fazer café coado","",0],
+["angulos","S","behind-the-scenes-and-founder","Bastidores e voz do fundador: o que acontece dentro do negócio vira conteúdo.","bastidores da fornada das 5 da manhã","",0],
+["angulos","S","interactive-content","Conteúdo de participação: enquetes, quizzes, caixas de pergunta, isto ou aquilo.","enquetes e caixinhas para a semana","",0],
+["angulos","S","meme-and-culture","Participar de memes e da cultura da internet como marca, sem passar vergonha.","dá para a marca entrar neste meme?","",0],
+["angulos","S","trend-jacking","Entrar numa tendência (som, formato, meme ou notícia) com critério: se vale e como executar.","vale entrar na trend desta semana?","",0],
+["angulos","S","data-and-original-research","Pesquisa própria: transforma dados, enquete ou análise em conteúdo de autoridade.","post com os dados da nossa pesquisa com clientes","",0],
+
+["texto","S","hook-writer","Escreve o gancho: a abertura que segura a atenção em legenda, vídeo, carrossel ou thread.","10 ganchos para um vídeo sobre café coado","",1],
+["texto","S","caption-writer","Legendas nativas de cada plataforma, na voz da marca.","legenda para esta foto do novo cardápio","",0],
+["texto","S","carousel-writer","Carrossel slide a slide para Instagram, LinkedIn ou TikTok, com direção de design e prompts de imagem.","carrossel sobre café coado para o Instagram","",0],
+["texto","S","thread-writer","Thread no X ou no Threads: uma sequência de posts que conta uma história ou defende um ponto.","thread sobre os 5 aprendizados do ano","",0],
+["texto","S","threads-post","Post único no Threads, no formato que a rede favorece.","post para o Threads sobre a novidade","",0],
+["texto","S","text-post-and-microblog","Post só de texto para LinkedIn, X, Threads, Bluesky ou Facebook.","post de texto sobre a decisão de fechar aos domingos","",0],
+["texto","S","story-writer","Sequência de Stories para Instagram e Facebook.","stories para anunciar a promoção de sexta","",0],
+["texto","S","reply-and-comment-writer","Respostas, comentários e mensagens diretas que geram conversa e comunidade.","responde estes 12 comentários","",0],
+["texto","S","linkedin-post-writer","Post de LinkedIn: profissional, de autoridade ou de fundador.","post de LinkedIn sobre a contratação da equipe","",0],
+["texto","M","social","Conteúdo orgânico para LinkedIn, X, Instagram, TikTok e Facebook numa skill só. Boa para resposta rápida e geral.","o que postar esta semana?","",0],
+
+["video","S","short-form-video-script","Roteiro de vídeo curto vertical (Reels, TikTok, Shorts) pensado para ser visto até o fim.","roteiro de 30 segundos sobre o pão de fermentação natural","",1],
+["video","S","reels-script","Roteiro de Reels do Instagram, que funciona mesmo sem som.","roteiro de Reels mostrando a receita","",0],
+["video","S","tiktok-script","Roteiro de TikTok, pensado para a descoberta e para o uso de som.","roteiro de TikTok com a trend do momento","",0],
+["video","S","youtube-shorts","Crescer com YouTube Shorts: roteiro, embalagem e estratégia do formato.","roteiro de Short a partir do vídeo longo","",0],
+["video","S","youtube-long-form","Vídeo longo no YouTube: título e miniatura primeiro, roteiro para retenção e crescimento do canal.","estrutura de um vídeo de 10 minutos","",0],
+["video","S","scripting-and-storyboarding","Pré-produção: roteiro em duas colunas (áudio e vídeo), lista de planos e storyboard.","roteiro e lista de planos para a gravação","",0],
+["video","S","talking-head-and-piece-to-camera","Falar para a câmera: ajuda uma pessoa real a gravar com naturalidade.","dicas para o dono gravar olhando para a câmera","",0],
+["video","S","podcast-and-audiograms","Do podcast para as redes: cortes curtos, legendados, e audiogramas.","cortes do episódio 12 para as redes","",0],
+["video","S","livestream-and-realtime","Lives: planejar, divulgar, conduzir e reaproveitar depois.","planeja a live de lançamento","",0],
+["video","M","video","Vídeo de produto feito com IA ou por código: gravação de tela, avatar ou animação, e qual abordagem usar.","vídeo de demonstração do aplicativo","",0],
+
+["visual","S","image-prompt","Ponto de partida de qualquer imagem: transforma a necessidade do post em briefing e encaminha para a ferramenta certa.","imagem de capa para o carrossel","",1],
+["visual","S","design-and-templates","Sistema de templates da marca: kit de marca e um conjunto pequeno de modelos reutilizáveis.","modelos de post para a marca","",0],
+["visual","S","canva","Produzir peças no Canva em escala, dentro da marca e sem cair na cara de template.","monta os posts da semana no Canva","ext:Canva",0],
+["visual","S","quote-cards-and-text-graphics","Cartões de citação e peças tipográficas a partir de uma frase ou de um número.","card com a frase da fundadora","",0],
+["visual","S","infographic-and-data-viz","Infográficos e gráficos honestos e fáceis de ler, a partir de dados reais.","infográfico com os dados da pesquisa","",0],
+["visual","S","thumbnail-design","Miniaturas de YouTube que ganham o clique: legíveis no celular e com um foco só.","miniatura para o vídeo novo","",0],
+["visual","S","pinterest-pin-design","Design de pins do Pinterest.","pins para a coleção de inverno","",0],
+["visual","S","nano-banana","Prompts para o Nano Banana, o gerador de imagens do Google Gemini.","foto de produto em mesa de madeira","ext:Nano Banana",0],
+["visual","S","ideogram","Prompts para o Ideogram, bom em imagens com texto e cara de design.","cartaz com o título da promoção","ext:Ideogram",0],
+["visual","S","flux","Prompts para o FLUX: gerar e editar imagens dentro da marca, com a variante e a licença certas.","série de imagens no estilo da marca","ext:FLUX",0],
+["visual","S","ai-image-editing","Edição de imagem com IA: remover objeto ou fundo, ampliar, estender e restaurar, na ferramenta certa.","remove o fundo destas fotos de produto","ext:editor de IA",0],
+["visual","M","image","Imagens de marketing para site e anúncios: gerar, editar e otimizar, e qual abordagem escolher.","imagem principal da página de vendas","",0],
+
+["ia","S","ai-video","Ponto de partida de vídeo com IA: escreve o briefing e indica a ferramenta certa para o trabalho.","qual ferramenta uso para um vídeo de produto?","ext:ferramenta de IA",1],
+["ia","S","veo-3","Prompts para o Google Veo: gerar ou animar vídeo para redes.","cena de café sendo coado em câmera lenta","ext:Veo",0],
+["ia","S","kling","Vídeo generativo no Kling: 4K, sequência de vários planos e transferência de movimento.","sequência de 3 planos do produto","ext:Kling",0],
+["ia","S","luma","Planos cinematográficos no Luma Dream Machine, a partir de texto ou de imagem.","anima esta foto da fachada","ext:Luma",0],
+["ia","S","runway","Dirigir o Runway: controle de câmera, personagem consistente e edição de vídeo.","movimento de câmera em volta do produto","ext:Runway",0],
+["ia","S","heygen","Vídeo com avatar falando no HeyGen.","vídeo de avatar explicando o serviço","ext:HeyGen",0],
+["ia","S","synthesia","Vídeo com avatar no Synthesia: treinamento, integração e explicativos em vários idiomas.","vídeo de boas-vindas para clientes","ext:Synthesia",0],
+["ia","S","ai-voiceover","Narração com voz de IA, a partir do ElevenLabs.","narração para o vídeo de 30 segundos","ext:ElevenLabs",0],
+["ia","S","suno","Músicas completas, música de marca e trilhas no Suno, com atenção ao plano e à licença.","jingle de 15 segundos para a marca","ext:Suno",0],
+["ia","S","ai-music-and-sound","Trilha e desenho de som para Reels e TikTok, originais ou licenciados, com segurança de direitos.","trilha de fundo para o Reels","ext:ferramenta de IA",0],
+
+["edicao","S","captions-and-clipping","Transforma vídeo longo em cortes curtos e põe legendas para quem assiste sem som.","cortes do webinar para Reels","ext:Opus Clip ou CapCut",1],
+["edicao","S","capcut","Edição de vídeo curto no CapCut, rápida e segura, no ritmo que segura a audiência.","edita este vídeo no CapCut","ext:CapCut",0],
+["edicao","S","descript","Edição de conteúdo falado (podcast, entrevista) no Descript, editando pela transcrição.","limpa a entrevista no Descript","ext:Descript",0],
+["edicao","S","opus-clip","Transforma vídeo longo em cortes publicáveis no OpusClip.","10 cortes do podcast","ext:OpusClip",0],
+
+["plataformas","S","instagram-growth","Crescer no Instagram: diagnostica onde o crescimento está travado e o que fazer.","por que o Instagram parou de crescer?","",1],
+["plataformas","S","tiktok-growth","Crescer no TikTok: diagnóstico e plano para a conta.","plano de crescimento no TikTok","",0],
+["plataformas","S","tiktok-photo-mode","Carrossel de fotos no TikTok (photo mode).","carrossel de fotos no TikTok com o cardápio","",0],
+["plataformas","S","linkedin-growth","Crescer no LinkedIn com perfil pessoal.","plano para o LinkedIn da fundadora","",0],
+["plataformas","S","linkedin-company-pages","Crescer com página de empresa no LinkedIn, que funciona diferente do perfil pessoal.","o que postar na página da empresa?","",0],
+["plataformas","S","x-growth","Crescer no X (Twitter).","plano de crescimento no X","",0],
+["plataformas","S","threads-growth","Crescer no Threads: a estratégia da conta, acima do post avulso.","vale investir no Threads?","",0],
+["plataformas","S","pinterest-growth","Crescer no Pinterest e levar tráfego para o site.","plano para o Pinterest da loja","",0],
+["plataformas","S","facebook-strategy","Estratégia de Facebook: recuperar alcance e definir o que ainda funciona.","o que ainda funciona no Facebook?","",0],
+["plataformas","S","facebook-groups","Grupos do Facebook como canal orgânico.","vale criar um grupo de clientes?","",0],
+["plataformas","S","reddit-marketing","Orientação para a marca aparecer no Reddit com credibilidade. Só aconselha, não publica.","como a marca deve participar no Reddit?","",0],
+
+["descoberta","S","social-seo","Fazer o conteúdo ser encontrado na busca das redes: palavras-chave em legenda, texto na tela e fala.","palavras-chave para os vídeos de receita","",1],
+["descoberta","S","instagram-seo","Busca dentro do Instagram: palavras-chave no perfil, na legenda e no texto alternativo.","otimiza o perfil para a busca do Instagram","",0],
+["descoberta","S","pinterest-seo","Busca do Pinterest: a camada de palavras-chave que acompanha o design do pin.","palavras-chave para os pins da coleção","",0],
+["descoberta","S","hashtag-strategy","Estratégia de hashtags e de descoberta na abordagem atual, não na antiga.","hashtags para os posts de dezembro","",0],
+["descoberta","S","ai-search-optimization","Fazer a marca ser citada e recomendada pelas IAs de resposta (ChatGPT, Perplexity, Google).","a marca aparece quando perguntam ao ChatGPT?","",0],
+
+["publicar","S","platform-specs-and-validation","Confere se cada peça cumpre os requisitos da plataforma antes de publicar em várias redes.","confere se estes posts estão no formato certo","",1],
+["publicar","S","scheduling-and-queue","Agenda, enfileira ou publica posts prontos nas contas conectadas, pela WoopSocial.","agenda os posts aprovados da semana","woop",0],
+["publicar","S","instagram-reels-publishing","Configuração de publicação de Reels: capa, legenda, áudio e opções de postagem.","configura a publicação do Reels de sexta","woop",0],
+["publicar","S","tiktok-video-publishing","Configuração de publicação de vídeo no TikTok: privacidade, opções e divulgação de publicidade.","configura a publicação do vídeo no TikTok","woop",0],
+["publicar","S","youtube-publishing-and-metadata","Título, descrição, tags e demais metadados de publicação no YouTube.","título e descrição para o vídeo novo","woop",0],
+
+["comunidade","S","engagement-routine","Desenha uma rotina diária de engajamento que cabe na agenda.","rotina de 20 minutos por dia de engajamento","",1],
+["comunidade","S","community-management","Construir comunidade: transformar audiência em gente que conversa entre si.","como criar comunidade em volta da marca?","",0],
+["comunidade","S","crisis-and-moderation","Quando algo dá errado: crise, ataque em massa, comentário negativo e moderação.","como responder a esta reclamação pública?","",0],
+["comunidade","M","community-marketing","Decidir se vale ter comunidade própria, onde hospedar e como fazê-la crescer.","vale abrir um grupo de clientes no WhatsApp?","",0],
+
+["site","M","cro","Mais conversão em página ou formulário: por que não converte e o que mudar primeiro.","por que a página de vendas não converte?","",1],
+["site","M","copywriting","Escreve ou reescreve o texto de páginas: inicial, de venda, de preços, de recurso.","reescreve o texto da página inicial","",0],
+["site","M","copy-editing","Edita, enxuga e revisa um texto que já existe: o que manter, cortar ou mudar.","revisa e enxuga este texto","",0],
+["site","M","signup","Melhora cadastro, registro e início de teste: quais campos e passos cortar.","simplifica o formulário de cadastro","",0],
+["site","M","onboarding","Melhora a ativação depois do cadastro: por que o usuário novo não fica.","melhora a primeira semana do cliente novo","",0],
+["site","M","popups","Cria ou melhora popups, barras fixas e banners, e decide se vale usar.","popup de captura para o blog","",0],
+["site","M","paywalls","Telas de upgrade dentro do aplicativo: quando e com que força pedir o pagamento.","quando mostrar a tela de upgrade?","",0],
+["site","M","site-architecture","Planeja ou reestrutura o site: quais páginas, navegação e estrutura de endereços.","estrutura de páginas para o site novo","",0],
+["site","M","free-tools","Planeja uma ferramenta gratuita como marketing, como uma calculadora, e avalia se vale construir.","ideia de calculadora gratuita para atrair clientes","",0],
+
+["seo","M","seo-audit","Auditoria de SEO técnico e de página: por que o tráfego caiu ou a página não aparece.","audita o SEO de exemplo.com.br","",1],
+["seo","M","ai-seo","Fazer o site ser citado nas respostas de IA: ChatGPT, Perplexity e resumos do Google.","como aparecer nas respostas do ChatGPT?","",0],
+["seo","M","schema","Adiciona, corrige ou valida dados estruturados (JSON-LD) e escolhe o tipo certo para cada página.","dados estruturados para a página de produto","",0],
+["seo","M","programmatic-seo","Páginas de SEO em escala a partir de modelo e dados, e se o conjunto tem chance de aparecer.","páginas por cidade para o serviço","",0],
+["seo","M","link-building","Conquistar links e menções que melhoram a posição no Google e a citação pelas IAs.","como conseguir links de sites do setor?","",0],
+["seo","M","competitors","Cria ou audita páginas de comparação e de alternativa: 'X ou Y', 'alternativa a X'.","página comparando com o concorrente X","",0],
+["seo","M","aso","Audita ou otimiza a página do aplicativo na App Store e no Google Play.","melhora a página do aplicativo na loja","",0],
+["seo","M","directory-submissions","Lista o produto em diretórios e sites de avaliação e escolhe quais valem o esforço.","em quais diretórios vale cadastrar?","",0],
+
+["email","M","emails","Cria ou melhora sequências automáticas de e-mail: o que enviar e quando.","sequência de boas-vindas em 5 e-mails","",1],
+["email","S","link-in-bio-and-traffic","Link na bio e tráfego: transformar alcance em clique, inscrito e audiência própria.","o que colocar no link da bio?","",1],
+["email","M","cold-email","E-mail frio para empresas: abertura, motivo do contato e sequência.","e-mail de primeiro contato para gerentes de RH","",0],
+["email","M","sms","Marketing por SMS e WhatsApp: se vale a pena e o que é permitido enviar.","campanha de WhatsApp para a base de clientes","",0],
+["email","M","lead-magnets","Planeja ou melhora a isca digital: o que oferecer em troca do e-mail.","isca digital para captar contatos","",0],
+["email","S","lead-magnets-and-funnels","Desenha o caminho que leva o tráfego das redes até a lista, o contato e a compra.","funil do Instagram até a lista de e-mail","",0],
+["email","S","email-and-newsletter","Newsletter e e-mail para criadores e marcas: a audiência própria que as redes alimentam.","plano para lançar uma newsletter","",0],
+["email","S","social-selling-and-dm","Venda por mensagem direta com consentimento, sem spam.","roteiro para atender quem chama no direct","",0],
+["email","M","referrals","Programas de indicação e de afiliados: o que recompensar e quanto pagar.","programa de indicação para clientes","",0],
+
+["pago","M","ads","Planeja, roda ou corrige anúncios no Google, na Meta e no LinkedIn.","estrutura de campanha na Meta com R$ 1.500 por mês","",1],
+["pago","M","ad-creative","Escreve e avalia criativos de anúncio: qual título, gancho ou ângulo rodar e qual pausar.","10 variações de criativo para a promoção","",0],
+["pago","M","conversion-tracking","Instala, audita ou corrige o rastreamento de conversão no Google Ads, Meta, GA4, LinkedIn e TikTok.","confere se o pixel está medindo as vendas","",0],
+
+["criadores","M","influencer-marketing","Parcerias com criadores e embaixadores: quem combina, quanto pagar e como estruturar o programa.","programa com microinfluenciadores locais","",1],
+["criadores","S","ugc-and-influencer","Parcerias pagas ou por permuta com criadores: briefing, direitos de uso e identificação de publicidade.","briefing para a criadora gravar o vídeo","",0],
+["criadores","S","collabs-and-cross-promotion","Colaborações entre criadores, sem pagamento, para trocar audiência.","ideia de collab com a marca vizinha","",0],
+["criadores","S","creator-monetization","Monetização para criadores: assinaturas, produtos e contratos com marcas.","como o perfil pode gerar receita?","",0],
+
+["medicao","S","analytics-and-reporting","Relatório das redes: lê os dados da plataforma com honestidade e transforma em próximas ações.","relatório de novembro do Instagram","",1],
+["medicao","M","analytics","Instala ou audita a medição do site e do produto e confere se a métrica está calculada certo.","o que devo medir no site?","",1],
+["medicao","M","attribution","Descobre qual marketing gera receita e se um canal está funcionando de verdade.","qual canal trouxe as vendas do mês?","",0],
+["medicao","M","ab-testing","Planeja, roda e lê testes A/B em página, e-mail e produto: o resultado é real?","plano de teste para o título da página","",0],
+["medicao","S","experimentation-and-ab-testing","Testes em conteúdo orgânico, com o rigor possível quando a amostra é pequena.","testa dois ganchos nos Reels","",0],
+
+["reaproveitar","S","cross-platform-repurposing","Transforma uma peça em vários posts nativos de cada plataforma, adaptando em vez de copiar.","adapta este vídeo para LinkedIn, X e Instagram","",1],
+["reaproveitar","S","content-recycling","Reciclagem: traz de volta, atualiza e reposta o conteúdo perene que já deu certo.","quais posts antigos vale repostar?","",0],
+["reaproveitar","P","content-repurposing","Transforma vídeos, transcrições e posts públicos de outras contas em ideias e peças reutilizáveis.","ideias a partir destes 5 vídeos do nicho","sc",0],
+
+["vendas","M","churn-prevention","Reduzir cancelamento: fluxo de cancelamento, oferta de retenção e recuperação de pagamento.","por que os clientes estão cancelando?","",1],
+["vendas","M","revops","Operação de receita: quando o contato está pronto para vendas, pontuação e roteamento.","quando passar o contato para o vendedor?","",0],
+["vendas","M","sales-enablement","Material de vendas: apresentação, uma página, respostas a objeções e roteiro de demonstração.","material de uma página para o vendedor","",0],
+["vendas","M","prospecting","Encontra e qualifica possíveis clientes para abordagem ativa: quem procurar primeiro.","lista de empresas para abordar primeiro","",0]
+];
+
+const E = "estudio-marketing-social", S = "social-media-skills", M = "marketing-skills", P = "social-media-research-skills";
+/* passo: [texto, [comandos], éPortão] */
+const FLOWS = [
+["Cliente novo, do zero", "Primeiro trabalho para uma marca.", [
+  ["Abrir o projeto", [E+":novo-projeto"]],
+  ["Montar o contexto", [M+":product-marketing", S+":brand-profile", S+":voice-builder"]],
+  ["Portão 1: você aprova o contexto", [], 1],
+  ["Auditar a conta e ler os concorrentes", [S+":content-audit", S+":competitor-analysis"]],
+  ["Estratégia, pilares e metas", [S+":social-strategy", S+":content-pillars", S+":goals-and-kpis"]],
+  ["Portão 2: você aprova a estratégia", [], 1],
+  ["Seguir para o calendário do mês", []]
+]],
+["Calendário e lote do mês", "Contexto, pilares e metas já existem.", [
+  ["Datas que servem à marca", [S+":seasonal-and-moment-marketing"]],
+  ["Calendário", [S+":content-calendar"]],
+  ["Portão 3: você aprova o calendário", [], 1],
+  ["Lista de peças do período", [S+":batch-content-plan"]],
+  ["Produção, peça por peça", [S+":hook-writer", S+":caption-writer", S+":carousel-writer", S+":reels-script"]],
+  ["Revisão de texto e de fatos", [M+":copy-editing", S+":content-research-and-sourcing"]],
+  ["Conferência de formato", [S+":platform-specs-and-validation"]],
+  ["Portão 4: você aprova as peças", [], 1]
+]],
+["Raio-X de concorrentes", "Saber o que os outros fazem e onde há espaço.", [
+  ["Confirmar a lista de contas", []],
+  ["Portão 5: você aprova o gasto de créditos", [], 1],
+  ["Estratégia de cada concorrente nas redes", [P+":competitor-social-research"]],
+  ["Posts que estouraram", [P+":outlier-post-finder"]],
+  ["O que eles anunciam", [P+":ad-library-teardown"]],
+  ["Preço, promessa e posicionamento", [M+":competitor-profiling"]],
+  ["Sem chave: leitura com links e capturas", [S+":competitor-analysis"]]
+]],
+["Lançamento ou campanha", "Produto, serviço ou evento com data marcada.", [
+  ["O quê, para quem, quando e com que oferta", [M+":launch", M+":offers"]],
+  ["Arco de semanas nas redes", [S+":campaign-and-launch-planning"]],
+  ["Portão 2: você aprova a estratégia da campanha", [], 1],
+  ["Página de venda", [M+":copywriting", M+":cro"]],
+  ["Sequência de e-mails", [M+":emails"]],
+  ["Medição combinada antes de ir ao ar", [M+":conversion-tracking", S+":goals-and-kpis"]],
+  ["Conteúdo: seguir o fluxo do calendário", []]
+]],
+["Site que não converte", "Tem visita e não tem venda ou contato.", [
+  ["Diagnóstico da página", [M+":cro"]],
+  ["Nova versão do texto", [M+":copywriting"]],
+  ["Se o objetivo for tráfego orgânico", [M+":seo-audit", M+":ai-seo"]],
+  ["Conferir o que está sendo medido", [M+":analytics"]],
+  ["Plano de teste", [M+":ab-testing"]]
+]],
+["Mídia paga", "Há verba para anúncios.", [
+  ["O que o setor anuncia", [P+":ad-library-teardown"]],
+  ["Estrutura, públicos e orçamento proposto", [M+":ads"]],
+  ["Variações de criativo", [M+":ad-creative"]],
+  ["O que precisa estar instalado antes de gastar", [M+":conversion-tracking"]],
+  ["Portão 5: você cria a campanha e autoriza a verba", [], 1]
+]],
+["Publicação", "Peças aprovadas, prontas para ir ao ar.", [
+  ["Conferir a conexão com a WoopSocial", []],
+  ["Validar cada peça", [S+":platform-specs-and-validation"]],
+  ["Portão 5: você aprova conta, data, hora e texto", [], 1],
+  ["Agendar", [S+":scheduling-and-queue"]],
+  ["Sem conexão: o estúdio entrega o roteiro de postagem", []]
+]],
+["Relatório do período", "Fechamento do mês ou da campanha.", [
+  ["Você envia as exportações ou os números da plataforma", []],
+  ["Relatório", [S+":analytics-and-reporting"]],
+  ["O que repetir e o que cortar", [S+":content-audit"]],
+  ["Se a pergunta for o que trouxe venda", [M+":attribution"]],
+  ["Três decisões para o próximo período", []]
+]],
+["Criadores e influenciadores", "Montar parcerias com quem já tem audiência.", [
+  ["Objetivo, perfil e modelo de remuneração", [M+":influencer-marketing"]],
+  ["Portão 5: você aprova o gasto de créditos", [], 1],
+  ["Lista de criadores", [P+":influencer-prospecting"]],
+  ["Análise dos finalistas", [P+":creator-profile-teardown", P+":audience-research"]],
+  ["Briefing, direitos de uso e identificação de publicidade", [S+":ugc-and-influencer"]]
+]]
+];
+
+const TIES = [
+["Público", "SMS:audience-research, para descrever para quem a marca cria conteúdo", "PESQ:audience-research", "Use a de PESQ para avaliar com dados a audiência de um criador ou de uma marca específica. Pede chave e créditos."],
+["Conteúdo de redes", "As skills especializadas de SMS", "MKT:social", "MKT:social serve para uma resposta rápida e geral."],
+["Vídeo", "As skills de roteiro e de IA de SMS", "MKT:video", "MKT:video para vídeo de produto, gravação de tela e vídeo feito por código."],
+["Imagem", "SMS:image-prompt e as skills de cada gerador", "MKT:image", "MKT:image para imagem de site, de anúncio e otimização de arquivo."],
+["Concorrentes", "PESQ:competitor-social-research, com dados", "SMS:competitor-analysis", "SMS quando não há chave. MKT:competitor-profiling para preço e promessa; MKT:competitors só para páginas de comparação."],
+["Tendências", "PESQ:trend-discovery para achar", "SMS:trend-jacking", "SMS decide se a marca deve entrar e como. Uma não substitui a outra."],
+["Influenciadores", "PESQ:influencer-prospecting para achar e MKT:influencer-marketing para o programa", "SMS:ugc-and-influencer", "SMS para o briefing, os direitos de uso e a identificação de publicidade."],
+["Busca por IA", "MKT:ai-seo, para o site", "SMS:ai-search-optimization", "SMS quando o que se quer ver citado é a marca e o conteúdo das redes."],
+["Isca digital", "MKT:lead-magnets, para escolher e desenhar a isca", "SMS:lead-magnets-and-funnels", "SMS para o caminho do post até a captura."],
+["Teste A/B", "MKT:ab-testing, em página, e-mail e produto", "SMS:experimentation-and-ab-testing", "SMS em conteúdo orgânico, onde a amostra é pequena."],
+["Relatório", "SMS:analytics-and-reporting, para as redes", "MKT:analytics", "MKT para instalar a medição e conferir o cálculo de uma métrica."],
+["Lançamento", "MKT:launch decide o quê e quando", "SMS:campaign-and-launch-planning", "Use as duas, nessa ordem: SMS desenha as semanas de conteúdo."],
+["Reaproveitamento", "SMS:cross-platform-repurposing, para conteúdo próprio", "PESQ:content-repurposing", "PESQ quando a matéria-prima é vídeo ou transcrição pública de outra conta."],
+["E-mail", "MKT:emails, para sequências automáticas", "SMS:email-and-newsletter", "SMS para newsletter de criador e a ponte das redes para a lista."],
+["Comunidade", "SMS:community-management, no dia a dia das redes", "MKT:community-marketing", "MKT para decidir se vale ter comunidade própria e onde hospedar."],
+["Estratégia de conteúdo", "SMS:social-strategy e SMS:content-pillars, para as redes", "MKT:content-strategy", "MKT para blog, SEO e conteúdo de site."]
+];
+
+/* ---------- estado ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+const GT = Object.fromEntries(GROUPS.map(g => [g[0], g[1]]));
+const items = SKILLS.map(([g, p, n, d, e, r, s]) => {
+  const cmd = "/" + PLUGINS[p].id + ":" + n;
+  return { g, p, n, d, e, r: r || "", s: !!s, cmd, key: p + ":" + n,
+    hay: norm([n, n.replace(/-/g, " "), d, e, GT[g], PLUGINS[p].label, PLUGINS[p].id].join(" ")) };
+});
+const state = { q: "", plugin: "all", avail: "all", favOnly: false, view: "skills" };
+let favs = new Set();
+try { favs = new Set(JSON.parse(localStorage.getItem("favs") || "[]")); } catch (e) {}
+const saveFavs = () => { try { localStorage.setItem("favs", JSON.stringify([...favs])); } catch (e) {} };
+
+/* ---------- copiar ---------- */
+let toastTimer;
+function toast(msg) {
+  const t = $("#toast"); t.textContent = msg; t.hidden = false;
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.hidden = true; }, 2200);
+}
+function fallbackCopy(text) {
+  const ta = document.createElement("textarea");
+  ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+  document.body.appendChild(ta); ta.select();
+  let ok = false; try { ok = document.execCommand("copy"); } catch (e) {}
+  ta.remove(); return ok;
+}
+function copy(text, btn) {
+  const done = ok => {
+    toast(ok ? "Copiado: " + text : "Não foi possível copiar. Selecione o texto e copie à mão.");
+    if (ok && btn && btn.classList.contains("copy")) {
+      btn.classList.add("done"); const old = btn.textContent; btn.textContent = "Copiado";
+      setTimeout(() => { btn.classList.remove("done"); btn.textContent = old; }, 1400);
+    }
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => done(true), () => done(fallbackCopy(text)));
+  } else done(fallbackCopy(text));
+}
+
+/* ---------- cabeçalho ---------- */
+function renderPlugins() {
+  const n = {}; items.forEach(i => { n[i.p] = (n[i.p] || 0) + 1; });
+  $("#plugins").innerHTML = Object.entries(PLUGINS).map(([k, p]) =>
+    `<div class="plug-row"><span class="dot d-${k}"></span><span class="name">${esc(p.label)}<span class="what">${esc(p.what)}</span><code>${esc(p.id)}</code></span><span class="n">${n[k]}</span></div>`).join("");
+  $("#total-skills").textContent = items.length;
+  $("#ct-skills").textContent = items.length;
+  $("#ct-fluxos").textContent = FLOWS.length;
+  $("#ct-desempate").textContent = TIES.length;
+}
+
+/* ---------- filtros ---------- */
+function matches(i) {
+  if (state.plugin !== "all" && i.p !== state.plugin) return false;
+  if (state.favOnly && !favs.has(i.key)) return false;
+  if (state.avail === "now" && i.r) return false;
+  if (state.avail === "need" && !(i.r === "sc" || i.r === "woop")) return false;
+  if (state.avail === "ext" && !i.r.startsWith("ext:")) return false;
+  if (state.q) { for (const t of norm(state.q).split(/\s+/)) if (t && !i.hay.includes(t)) return false; }
+  return true;
+}
+function renderChips() {
+  const base = items.filter(i => { const p = state.plugin; state.plugin = "all"; const ok = matches(i); state.plugin = p; return ok; });
+  const n = { all: base.length }; base.forEach(i => { n[i.p] = (n[i.p] || 0) + 1; });
+  const chip = (k, label, dot) => `<button class="chip" data-plugin="${k}" aria-pressed="${state.plugin === k}">${dot ? `<span class="dot d-${k}"></span>` : ""}${esc(label)} <span class="ct">${n[k] || 0}</span></button>`;
+  $("#chips").innerHTML = chip("all", "Todos") + Object.entries(PLUGINS).map(([k, p]) => chip(k, p.label, true)).join("") +
+    `<button class="chip" data-fav="1" aria-pressed="${state.favOnly}"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" style="fill:currentColor"><path d="M12 3l2.7 5.7 6.3.8-4.6 4.3 1.2 6.2L12 17l-5.6 3 1.2-6.2L3 9.5l6.3-.8z"/></svg>Favoritas <span class="ct">${favs.size}</span></button>`;
+}
+function pills(i) {
+  let h = "";
+  if (i.s) h += `<span class="pill start">comece por esta</span>`;
+  if (i.r === "sc") h += `<span class="pill need">pede chave ScrapeCreators</span>`;
+  else if (i.r === "woop") h += `<span class="pill need">publicar pede WoopSocial</span>`;
+  else if (i.r.startsWith("ext:")) h += `<span class="pill ext">usa ${esc(i.r.slice(4))}</span>`;
+  return h;
+}
+function rowHtml(i) {
+  const on = favs.has(i.key);
+  return `<article class="row">
+    <button class="fav" data-key="${esc(i.key)}" aria-pressed="${on}" aria-label="${on ? "Tirar das favoritas" : "Marcar como favorita"}: ${esc(i.n)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.7 6.3.8-4.6 4.3 1.2 6.2L12 17l-5.6 3 1.2-6.2L3 9.5l6.3-.8z"/></svg></button>
+    <div class="main">
+      <div class="cmd"><span class="c"><span class="pre p-${i.p}">/${esc(PLUGINS[i.p].id)}:</span><span class="sk">${esc(i.n)}</span></span>${pills(i)}</div>
+      <p class="desc">${esc(i.d)}</p>
+      <p class="ex">Exemplo: <button data-copy="${esc(i.cmd + " " + i.e)}" title="Copiar o exemplo">${esc(i.cmd)} ${esc(i.e)}</button></p>
+    </div>
+    <button class="copy" data-copy="${esc(i.cmd + " ")}">Copiar</button>
+  </article>`;
+}
+function render() {
+  const shown = items.filter(matches);
+  const by = {}; shown.forEach(i => { (by[i.g] = by[i.g] || []).push(i); });
+  const list = $("#list");
+  if (!shown.length) {
+    list.innerHTML = `<div class="empty">Nenhuma skill com esse filtro.<br><button id="clear2">Limpar busca e filtros</button></div>`;
+  } else {
+    list.innerHTML = GROUPS.filter(g => by[g[0]]).map(g => {
+      const rows = by[g[0]].slice().sort((a, b) => (b.s - a.s));
+      return `<section class="group" id="g-${g[0]}"><header><h2>${esc(g[1])}</h2><span class="gct">${rows.length} ${rows.length === 1 ? "skill" : "skills"}</span><p class="hint">${esc(g[2])}</p></header><div class="rows">${rows.map(rowHtml).join("")}</div></section>`;
+    }).join("");
+  }
+  $("#rail").innerHTML = GROUPS.map(g => {
+    const n = (by[g[0]] || []).length;
+    return `<button data-g="${g[0]}" ${n ? "" : "disabled"}><span>${esc(g[1])}</span><span>${n}</span></button>`;
+  }).join("");
+  const filtered = state.q || state.plugin !== "all" || state.avail !== "all" || state.favOnly;
+  $("#count").innerHTML = `Mostrando ${shown.length} de ${items.length} skills` + (filtered ? `<button id="clear">limpar filtros</button>` : "");
+  renderChips();
+  spy();
+}
+function clearFilters() {
+  state.q = ""; state.plugin = "all"; state.avail = "all"; state.favOnly = false;
+  $("#q").value = ""; $("#avail").value = "all"; render();
+}
+
+/* ---------- fluxos e desempate ---------- */
+function renderFlows() {
+  $("#flows").innerHTML = FLOWS.map(([t, w, steps]) =>
+    `<section class="flow"><h3>${esc(t)}</h3><p class="when">${esc(w)}</p><ol>${steps.map(([txt, cmds, gate]) =>
+      `<li class="${gate ? "gate" : ""}"><div>${esc(txt)}${cmds && cmds.length ? "<br>" + cmds.map(c => `<button class="kbtn" data-copy="/${esc(c)} " title="Copiar o comando">/${esc(c)}</button>`).join("") : ""}</div></li>`).join("")}</ol></section>`).join("");
+  $("#tie tbody").innerHTML = TIES.map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join("")}</tr>`).join("");
+}
+
+/* ---------- navegação ---------- */
+function setView(v, fromHash) {
+  if (!["skills", "fluxos", "desempate"].includes(v)) v = "skills";
+  state.view = v;
+  ["skills", "fluxos", "desempate"].forEach(k => {
+    $("#view-" + k).hidden = k !== v;
+    $("#tab-" + k).setAttribute("aria-selected", String(k === v));
+  });
+  if (!fromHash) { try { history.replaceState(null, "", "#" + v); } catch (e) { location.hash = v; } }
+  measure();
+}
+function measure() {
+  const tb = $("#toolbar");
+  if (tb && !$("#view-skills").hidden) document.documentElement.style.setProperty("--tb-h", tb.offsetHeight + "px");
+}
+function spy() {
+  const groups = [...document.querySelectorAll(".group")];
+  if (!groups.length) return;
+  const off = ($("#toolbar").offsetHeight || 0) + 40;
+  let cur = groups[0].id;
+  for (const g of groups) { if (g.getBoundingClientRect().top - off <= 0) cur = g.id; else break; }
+  document.querySelectorAll("#rail button").forEach(b => b.classList.toggle("on", "g-" + b.dataset.g === cur));
+}
+
+document.addEventListener("click", ev => {
+  const t = ev.target.closest("button"); if (!t) return;
+  if (t.dataset.copy !== undefined) { copy(t.dataset.copy.replace(/\s+$/, t.classList.contains("copy") || t.classList.contains("kbtn") ? " " : ""), t); return; }
+  if (t.classList.contains("fav")) {
+    const k = t.dataset.key; favs.has(k) ? favs.delete(k) : favs.add(k); saveFavs();
+    if (state.favOnly) render(); else { t.setAttribute("aria-pressed", String(favs.has(k))); renderChips(); }
+    return;
+  }
+  if (t.dataset.plugin) { state.plugin = t.dataset.plugin; render(); return; }
+  if (t.dataset.fav) { state.favOnly = !state.favOnly; render(); return; }
+  if (t.dataset.g) { const el = $("#g-" + t.dataset.g); if (el) el.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" }); return; }
+  if (t.dataset.view) { setView(t.dataset.view); return; }
+  if (t.id === "clear" || t.id === "clear2") { clearFilters(); return; }
+});
+$("#q").addEventListener("input", e => { state.q = e.target.value.trim(); render(); });
+$("#avail").addEventListener("change", e => { state.avail = e.target.value; render(); });
+document.addEventListener("keydown", e => {
+  if (e.key === "/" && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName) && state.view === "skills") { e.preventDefault(); $("#q").focus(); }
+  if (e.key === "Escape" && document.activeElement === $("#q") && $("#q").value) { $("#q").value = ""; state.q = ""; render(); }
+});
+window.addEventListener("scroll", spy, { passive: true });
+window.addEventListener("resize", measure);
+window.addEventListener("hashchange", () => setView(location.hash.slice(1), true));
+
+renderPlugins(); renderFlows(); render();
+setView(location.hash.slice(1) || "skills", true);
+if (window.ResizeObserver) new ResizeObserver(measure).observe($("#toolbar"));
+</script>
+</body>
+</html>
