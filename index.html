@@ -191,6 +191,19 @@ h1 { font-family: var(--f-display); font-weight: 700; font-size: clamp(26px, 4.2
 .kbtn { display: inline-block; font-family: var(--f-mono); font-size: 12px; background: var(--sunken); border: 0; border-radius: 5px; padding: 2px 7px; margin: 3px 4px 0 0; overflow-wrap: anywhere; text-align: left; }
 .kbtn:hover { background: var(--accent-soft); color: var(--accent); }
 
+/* Bibliotecas e referências */
+.libsec { margin-bottom: 26px; }
+.libsec > h3 { font-family: var(--f-display); font-size: 19px; font-weight: 600; margin: 0 0 2px; }
+.libsec > p { color: var(--muted); font-size: 13.5px; margin: 0 0 10px; max-width: 70ch; }
+.lib { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; min-width: 0; display: grid; gap: 8px; align-content: start; }
+.lib header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; }
+.lib h4 { font-family: var(--f-display); font-size: 17px; font-weight: 600; margin: 0; }
+.lib h4 a { color: inherit; text-decoration-color: var(--line); text-underline-offset: 3px; }
+.lib h4 a:hover { text-decoration-color: var(--accent); }
+.lib p { margin: 0; font-size: 14px; }
+.lib .lbl { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; color: var(--muted); display: block; margin-bottom: 2px; }
+.lib .note { color: var(--muted); font-size: 13px; }
+
 /* Desempate */
 .tblwrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
 table { border-collapse: collapse; width: 100%; min-width: 720px; font-size: 14px; }
@@ -234,6 +247,7 @@ footer.wrap { color: var(--muted); font-size: 12.5px; padding-block: 0 40px; }
     <button class="tab" role="tab" id="tab-skills" data-view="skills" aria-selected="true">Skills <span class="ct" id="ct-skills"></span></button>
     <button class="tab" role="tab" id="tab-fluxos" data-view="fluxos" aria-selected="false">Fluxos prontos <span class="ct" id="ct-fluxos"></span></button>
     <button class="tab" role="tab" id="tab-desempate" data-view="desempate" aria-selected="false">Qual das duas usar? <span class="ct" id="ct-desempate"></span></button>
+    <button class="tab" role="tab" id="tab-bibliotecas" data-view="bibliotecas" aria-selected="false">Bibliotecas e referências <span class="ct" id="ct-bibliotecas"></span></button>
   </div>
 </header>
 
@@ -270,6 +284,11 @@ footer.wrap { color: var(--muted); font-size: 12.5px; padding-block: 0 40px; }
 <div id="view-desempate" class="wrap panel" hidden>
   <p class="intro">Os repositórios têm skills parecidas. Esta é a regra que o orquestrador usa para escolher. Abreviações: SMS = social-media-skills, MKT = marketing-skills, PESQ = social-media-research-skills, MENG = mengto-skills, IMP = impeccable, GSAP = gsap-skills, THREE = threejs-skills.</p>
   <div class="tblwrap"><table id="tie"><thead><tr><th>Assunto</th><th>Use</th><th>Em vez de</th><th>Quando inverter</th></tr></thead><tbody></tbody></table></div>
+</div>
+
+<div id="view-bibliotecas" class="wrap panel" hidden>
+  <p class="intro">O que o estúdio usa na construção de site com 3D e que não é skill. Biblioteca de código entra em cada projeto de site, com um comando. Referência se estuda, não se copia. Material se baixa com a licença anotada. Nada daqui se instala como plugin.</p>
+  <div id="libs"></div>
 </div>
 
 <footer class="wrap">Catálogo de 25/11/2026. Descrições resumidas em português a partir dos originais em inglês; o método completo está no arquivo de cada skill.</footer>
@@ -833,8 +852,10 @@ const FLOWS = [
 ]],
 ["Página com história por rolagem e 3D", "Site que apresenta personagens, produto ou marca em cenas conectadas.", [
   ["O argumento da página, antes da forma", [M+":copywriting"]],
+  ["Estudo das referências (aba Bibliotecas e referências)", [W+":video-to-superprompt", W+":stitched-full-page-capture"]],
   ["Direção e roteiro das cenas", [W+":scroll-world-storytelling", W+":build-threejs-scroll-worlds"]],
   ["Portão: você aprova o roteiro de cenas", [], 1],
+  ["Decidir React ou não e instalar as bibliotecas, com a versão fixada", []],
   ["Base 3D: cena, modelos, luz e animação", [T+":threejs-fundamentals", T+":threejs-loaders", T+":threejs-lighting", T+":threejs-animation"]],
   ["Coreografia ligada à rolagem", [G+":gsap-timeline", G+":gsap-scrolltrigger"]],
   ["Interação com os personagens", [T+":threejs-interaction"]],
@@ -878,6 +899,43 @@ const TIES = [
 ["Avatar de IA", "SMS:heygen, para escrever o roteiro e dirigir o avatar", "MENG:create-ai-avatar", "MENG para criar o seu próprio avatar e a voz clonada, do zero."],
 ["Desempenho", "THREE:threejs-performance para a cena 3D e GSAP:gsap-performance para a animação", "MENG:optimize-web-animations", "MENG para medir a página inteira e achar vazamento de memória."]
 ];
+
+/* Bibliotecas, referências e materiais: não são skills. [título, subtítulo, itens] */
+const LIBS = [
+["Bibliotecas de código", "Entram no projeto do site com um comando, dentro da pasta do projeto. Versões conferidas em 25/11/2026.", [
+  { nome: "three.js", url: "https://github.com/mrdoob/three.js", lic: "MIT", ver: "r187 no npm",
+    oque: "A base do 3D no navegador: cena, câmera, luz, modelos e animação.",
+    cmd: "npm install three@0.186",
+    nota: "As skills de three.js do estúdio foram escritas para a r186; por isso o comando fixa essa versão. A r187 saiu em 30/10/2026.",
+    skills: [T+":threejs-fundamentals", T+":threejs-loaders", T+":threejs-animation", T+":threejs-lighting", T+":threejs-interaction", T+":threejs-performance"] },
+  { nome: "React Three Fiber", url: "https://github.com/pmndrs/react-three-fiber", lic: "MIT", ver: "9.8.2",
+    oque: "Escreve a cena three.js como componentes React. Só faz sentido se o site for em React.",
+    cmd: "npm install three@0.186 @react-three/fiber@9",
+    nota: "Pede React 19 e three 0.156 ou mais novo.",
+    skills: [T+":threejs-react-three-fiber", G+":gsap-react"] },
+  { nome: "drei", url: "https://github.com/pmndrs/drei", lic: "MIT", ver: "10.7.9",
+    oque: "Componentes prontos para o React Three Fiber: controles de câmera, carregadores, ambiente e texto.",
+    cmd: "npm install @react-three/drei@10",
+    nota: "Pede React Three Fiber 9, React 19 e three 0.159 ou mais novo.",
+    skills: [T+":threejs-react-three-fiber", T+":threejs-asset-pipeline"] }
+]],
+["Referências de direção", "Definem a barra de ambição e a linguagem. Personagens, modelos, trilha e identidade de um site de referência são de quem fez.", [
+  { nome: "Bruno Simon", url: "https://bruno-simon.com/", lic: "código MIT",
+    oque: "Portfólio como mundo jogável: a pessoa dirige um carrinho por um cenário 3D com física. Feito com three.js, GSAP, Rapier (física) e Howler (som).",
+    nota: "O código é aberto (github.com/brunosimon/folio-2025) e pode ser lido. Os modelos e a música do portfólio não entram em projeto de cliente.",
+    rot: "Skills para estudar a referência", skills: [W+":video-to-superprompt", T+":threejs-interaction", W+":build-game-camera-controls", W+":audit-reference-originality"] },
+  { nome: "Lusion", url: "https://lusion.co/", lic: "",
+    oque: "Estúdio de produção digital conhecido por sites em WebGL. Observe as transições, o acabamento e o ritmo.",
+    rot: "Skills para estudar a referência", skills: [W+":stitched-full-page-capture", W+":video-to-superprompt", W+":build-awwwards-quality-sites", W+":audit-reference-originality"] }
+]],
+["Materiais", "Arquivos para iluminar e texturizar a cena. Anote sempre o nome do arquivo, o endereço e a data em que baixou.", [
+  { nome: "Poly Haven", url: "https://polyhaven.com/", lic: "CC0",
+    oque: "Ambientes HDR para iluminação, texturas e modelos 3D, de uso livre, inclusive comercial, sem exigir crédito.",
+    nota: "Para a web, ambientes em 1k ou 2k costumam bastar; os de alta resolução passam de 100 MB. Passe modelos e texturas pela otimização antes de pôr no site.",
+    rot: "Skills que usam", skills: [T+":threejs-lighting", T+":threejs-textures", T+":threejs-loaders", T+":threejs-asset-pipeline", W+":3d-high-resolution-textures"] }
+]]
+];
+const VIEWS = ["skills", "fluxos", "desempate", "bibliotecas"];
 
 /* ---------- estado ---------- */
 const $ = (s, r = document) => r.querySelector(s);
@@ -930,6 +988,7 @@ function renderPlugins() {
   $("#ct-skills").textContent = items.length;
   $("#ct-fluxos").textContent = FLOWS.length;
   $("#ct-desempate").textContent = TIES.length;
+  $("#ct-bibliotecas").textContent = LIBS.reduce((n, s) => n + s[2].length, 0);
 }
 
 /* ---------- filtros ---------- */
@@ -1005,6 +1064,16 @@ function clearFilters() {
 }
 
 /* ---------- fluxos e desempate ---------- */
+function renderLibs() {
+  $("#libs").innerHTML = LIBS.map(([titulo, sub, itens]) =>
+    `<section class="libsec"><h3>${esc(titulo)}</h3><p>${esc(sub)}</p><div class="flows">${itens.map(l =>
+      `<article class="lib"><header><h4><a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.nome)}</a></h4>${l.lic ? `<span class="pill ext">${esc(l.lic)}</span>` : ""}${l.ver ? `<span class="pill ext">${esc(l.ver)}</span>` : ""}</header>
+        <p>${esc(l.oque)}</p>
+        ${l.cmd ? `<p><span class="lbl">No projeto do site</span><button class="kbtn" data-copy="${esc(l.cmd)}" title="Copiar o comando">${esc(l.cmd)}</button></p>` : ""}
+        ${l.nota ? `<p class="note">${esc(l.nota)}</p>` : ""}
+        <p><span class="lbl">${esc(l.rot || "Skills que cobrem")}</span>${l.skills.map(c => `<button class="kbtn" data-copy="/${esc(c)} " title="Copiar o comando">/${esc(c)}</button>`).join("")}</p>
+      </article>`).join("")}</div></section>`).join("");
+}
 function renderFlows() {
   $("#flows").innerHTML = FLOWS.map(([t, w, steps]) =>
     `<section class="flow"><h3>${esc(t)}</h3><p class="when">${esc(w)}</p><ol>${steps.map(([txt, cmds, gate]) =>
@@ -1014,9 +1083,9 @@ function renderFlows() {
 
 /* ---------- navegação ---------- */
 function setView(v, fromHash) {
-  if (!["skills", "fluxos", "desempate"].includes(v)) v = "skills";
+  if (!VIEWS.includes(v)) v = "skills";
   state.view = v;
-  ["skills", "fluxos", "desempate"].forEach(k => {
+  VIEWS.forEach(k => {
     $("#view-" + k).hidden = k !== v;
     $("#tab-" + k).setAttribute("aria-selected", String(k === v));
   });
@@ -1060,7 +1129,7 @@ window.addEventListener("scroll", spy, { passive: true });
 window.addEventListener("resize", measure);
 window.addEventListener("hashchange", () => setView(location.hash.slice(1), true));
 
-renderPlugins(); renderFlows(); render();
+renderPlugins(); renderFlows(); renderLibs(); render();
 setView(location.hash.slice(1) || "skills", true);
 if (window.ResizeObserver) new ResizeObserver(measure).observe($("#toolbar"));
 </script>

@@ -1,6 +1,6 @@
 # Skills do Estúdio de Marketing e Redes Sociais
 
-Painel de consulta: 420 skills do Claude Code organizadas por etapa de trabalho, com o que cada uma faz, o comando para chamar e um exemplo de pedido. Em português.
+Painel de consulta: 420 skills do Claude Code organizadas por etapa de trabalho, com o que cada uma faz, o comando para chamar e um exemplo de pedido. Traz também as bibliotecas de código, as referências e os bancos de material usados na construção de site com 3D. Em português.
 
 Página: https://daniel-escaleira.github.io/skills-estudio-marketing/
 
