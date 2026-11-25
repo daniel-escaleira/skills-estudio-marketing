@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="As 175 skills do Estúdio de Marketing e Redes Sociais: para que serve cada uma, o comando para chamar e um exemplo de pedido.">
+<meta name="description" content="As 420 skills do Estúdio de Marketing e Redes Sociais: para que serve cada uma, o comando para chamar e um exemplo de pedido.">
 <meta name="robots" content="noindex">
 <style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Skills do Estúdio de Marketing</title>
@@ -15,6 +15,7 @@
   --ink: #15201e; --muted: #56655f; --line: #d5dcd9;
   --accent: #0c6a5b; --accent-ink: #ffffff; --accent-soft: #dcefe9;
   --p-e: #15201e; --p-s: #ad2c66; --p-m: #2553c9; --p-p: #9a5a00;
+  --p-w: #6a3dbd; --p-i: #0a6f84; --p-g: #2a7a1c; --p-t: #c0420e;
   --warn-bg: #fbecd2; --warn-fg: #7a4700;
   --fav: #c98a00;
   --f-display: "Space Grotesk", "Inter", system-ui, sans-serif;
@@ -28,6 +29,7 @@
     --ink: #e7eeeb; --muted: #9aaaa5; --line: #2b3836;
     --accent: #52c4ae; --accent-ink: #06231d; --accent-soft: #17332e;
     --p-e: #e7eeeb; --p-s: #f286b5; --p-m: #8fadff; --p-p: #f0b65a;
+    --p-w: #b9a0ff; --p-i: #5fcadb; --p-g: #86d46a; --p-t: #ff9a6c;
     --warn-bg: #3a2c12; --warn-fg: #f3c77a;
     --fav: #f0b93a;
     color-scheme: dark;
@@ -38,6 +40,7 @@
   --ink: #e7eeeb; --muted: #9aaaa5; --line: #2b3836;
   --accent: #52c4ae; --accent-ink: #06231d; --accent-soft: #17332e;
   --p-e: #e7eeeb; --p-s: #f286b5; --p-m: #8fadff; --p-p: #f0b65a;
+    --p-w: #b9a0ff; --p-i: #5fcadb; --p-g: #86d46a; --p-t: #ff9a6c;
   --warn-bg: #3a2c12; --warn-fg: #f3c77a;
   --fav: #f0b93a;
   color-scheme: dark;
@@ -79,15 +82,16 @@ h1 { font-family: var(--f-display); font-weight: 700; font-size: clamp(26px, 4.2
 .notes code { font-size: 12.5px; overflow-wrap: anywhere; }
 
 /* Plugins */
-.plugins { display: grid; gap: 8px; min-width: 0; }
+.plugins { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 22px; min-width: 0; align-content: start; }
+@media (max-width: 560px) { .plugins { grid-template-columns: minmax(0, 1fr); } .plug-row .what { display: none; } }
 .plug-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; align-items: baseline; padding: 9px 0; border-bottom: 1px solid var(--line); }
-.plug-row:last-child { border-bottom: 0; }
 .dot { width: 9px; height: 9px; border-radius: 2px; display: inline-block; flex: none; }
 .d-E { background: var(--p-e); } .d-S { background: var(--p-s); } .d-M { background: var(--p-m); } .d-P { background: var(--p-p); }
+.d-W { background: var(--p-w); } .d-I { background: var(--p-i); } .d-G { background: var(--p-g); } .d-T { background: var(--p-t); }
 .plug-row .name { font-weight: 600; }
 .plug-row .name code { display: block; font-size: 12px; font-weight: 400; color: var(--muted); overflow-wrap: anywhere; }
 .plug-row .what { display: block; font-size: 13px; color: var(--muted); font-weight: 400; }
-.plug-row .n { font-family: var(--f-display); font-weight: 700; font-size: 20px; font-variant-numeric: tabular-nums; }
+.plug-row .n { font-family: var(--f-display); font-weight: 700; font-size: 18px; font-variant-numeric: tabular-nums; }
 
 /* Abas */
 .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-top: 26px; overflow-x: auto; }
@@ -118,10 +122,15 @@ h1 { font-family: var(--f-display); font-weight: 700; font-size: clamp(26px, 4.2
 .rail button.on { color: var(--ink); font-weight: 600; background: var(--accent-soft); }
 .rail button span:last-child { font-variant-numeric: tabular-nums; font-size: 12px; }
 .rail button[disabled] { opacity: .35; cursor: default; }
+.rail-h { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; color: var(--muted); padding: 12px 8px 4px; }
+.rail-h:first-child { padding-top: 0; }
+.track-h { font-family: var(--f-display); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; color: var(--muted); margin: 0; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.track-h + .group { margin-top: -8px; }
 @media (max-width: 900px) {
   .body { grid-template-columns: minmax(0, 1fr); gap: 12px; }
   .rail { position: static; max-height: none; display: flex; overflow-x: auto; overflow-y: hidden; gap: 6px; padding: 0 0 6px; }
   .rail button { width: auto; white-space: nowrap; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 5px 11px; flex: none; }
+  .rail-h { display: none; }
 }
 .list { min-width: 0; display: grid; gap: 26px; }
 
@@ -129,6 +138,7 @@ h1 { font-family: var(--f-display); font-weight: 700; font-size: clamp(26px, 4.2
 .group { min-width: 0; scroll-margin-top: calc(env(safe-area-inset-top, 0px) + var(--tb-h) + 14px); }
 .group > header { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
 .group h2 { font-family: var(--f-display); font-size: 19px; font-weight: 600; margin: 0; }
+.group h3 { margin: 0; }
 .group .gct { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
 .group .hint { font-size: 13.5px; color: var(--muted); flex-basis: 100%; margin: 0; max-width: 70ch; }
 .rows { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
@@ -145,6 +155,7 @@ h1 { font-family: var(--f-display); font-weight: 700; font-size: clamp(26px, 4.2
 .cmd .c { min-width: 0; overflow-wrap: anywhere; }
 .cmd .pre { font-weight: 500; }
 .pre.p-E { color: var(--muted); } .pre.p-S { color: var(--p-s); } .pre.p-M { color: var(--p-m); } .pre.p-P { color: var(--p-p); }
+.pre.p-W { color: var(--p-w); } .pre.p-I { color: var(--p-i); } .pre.p-G { color: var(--p-g); } .pre.p-T { color: var(--p-t); }
 .cmd .sk { font-weight: 700; color: var(--ink); }
 .pill { font-family: var(--f-body); font-size: 11.5px; font-weight: 600; padding: 1px 8px; border-radius: 999px; white-space: nowrap; letter-spacing: .01em; }
 .pill.start { background: var(--accent-soft); color: var(--accent); }
@@ -196,7 +207,7 @@ footer.wrap { color: var(--muted); font-size: 12.5px; padding-block: 0 40px; }
 <body>
 
 <header class="top wrap">
-  <div class="eyebrow">Claude Code · 4 plugins · <span id="total-skills">175</span> skills</div>
+  <div class="eyebrow">Claude Code · <span id="total-plugins">8</span> plugins · <span id="total-skills">420</span> skills</div>
   <h1>Skills do Estúdio de Marketing e Redes Sociais</h1>
   <p class="lede">O que cada skill faz e o comando para chamá-la. <b>Não sabe por onde começar?</b> Use o orquestrador: ele escolhe as skills por você.</p>
 
@@ -216,7 +227,7 @@ footer.wrap { color: var(--muted); font-size: 12.5px; padding-block: 0 40px; }
         <li>Na dúvida: <code>/estudio-marketing-social:estudio</code> e o que você precisa.</li>
       </ul>
     </section>
-    <section class="plugins" aria-label="Os quatro plugins" id="plugins"></section>
+    <section class="plugins" aria-label="Os plugins do estúdio" id="plugins"></section>
   </div>
 
   <div class="tabs" role="tablist">
@@ -232,12 +243,12 @@ footer.wrap { color: var(--muted); font-size: 12.5px; padding-block: 0 40px; }
       <div class="tb-row">
         <label class="search" for="q">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-          <input id="q" type="search" placeholder="Buscar: carrossel, concorrentes, SEO, TikTok, e-mail…" autocomplete="off" aria-label="Buscar skill">
+          <input id="q" type="search" placeholder="Buscar: carrossel, concorrentes, SEO, rolagem, 3D, GSAP…" autocomplete="off" aria-label="Buscar skill">
         </label>
         <select class="sel" id="avail" aria-label="Disponibilidade">
           <option value="all">Todas as skills</option>
           <option value="now">Funcionam agora, sem conta</option>
-          <option value="need">Pedem chave ou conta</option>
+          <option value="need">Pedem chave, conta ou programa</option>
           <option value="ext">Usam ferramenta externa</option>
         </select>
       </div>
@@ -257,11 +268,11 @@ footer.wrap { color: var(--muted); font-size: 12.5px; padding-block: 0 40px; }
 </div>
 
 <div id="view-desempate" class="wrap panel" hidden>
-  <p class="intro">Os três repositórios têm skills parecidas. Esta é a regra que o orquestrador usa para escolher. Abreviações: SMS = social-media-skills, MKT = marketing-skills, PESQ = social-media-research-skills.</p>
+  <p class="intro">Os repositórios têm skills parecidas. Esta é a regra que o orquestrador usa para escolher. Abreviações: SMS = social-media-skills, MKT = marketing-skills, PESQ = social-media-research-skills, MENG = mengto-skills, IMP = impeccable, GSAP = gsap-skills, THREE = threejs-skills.</p>
   <div class="tblwrap"><table id="tie"><thead><tr><th>Assunto</th><th>Use</th><th>Em vez de</th><th>Quando inverter</th></tr></thead><tbody></tbody></table></div>
 </div>
 
-<footer class="wrap">Catálogo de 23/11/2026. Descrições resumidas em português a partir dos originais em inglês; o método completo está no arquivo de cada skill.</footer>
+<footer class="wrap">Catálogo de 25/11/2026. Descrições resumidas em português a partir dos originais em inglês; o método completo está no arquivo de cada skill.</footer>
 <div class="toast" id="toast" role="status" hidden></div>
 
 <script>
@@ -269,7 +280,11 @@ const PLUGINS = {
   E: { id: "estudio-marketing-social", label: "Orquestrador", what: "Escolhe e conduz as outras skills" },
   S: { id: "social-media-skills", label: "Redes sociais", what: "Conteúdo, formatos, plataformas, publicação" },
   M: { id: "marketing-skills", label: "Marketing", what: "Posicionamento, site, SEO, anúncios, e-mail, vendas" },
-  P: { id: "social-media-research-skills", label: "Pesquisa", what: "Dados públicos das redes (pede chave)" }
+  P: { id: "social-media-research-skills", label: "Pesquisa", what: "Dados públicos das redes (pede chave)" },
+  W: { id: "mengto-skills", label: "Web design", what: "Páginas, estilos, rolagem, 3D, ilustração, vídeo, jogos" },
+  I: { id: "impeccable", label: "Direção visual", what: "Criticar, auditar e refinar interfaces" },
+  G: { id: "gsap-skills", label: "Animação GSAP", what: "Skills oficiais: tempo, rolagem, React" },
+  T: { id: "threejs-skills", label: "Three.js", what: "API atual: cena, modelos, luz, interação" }
 };
 
 const GROUPS = [
@@ -295,8 +310,25 @@ const GROUPS = [
   ["criadores", "Criadores, influência e parcerias", "Programas com influenciadores, UGC e colaborações."],
   ["medicao", "Medição e testes", "Ler resultado, atribuir venda e testar com rigor."],
   ["reaproveitar", "Reaproveitar conteúdo", "Uma peça vira várias; o que deu certo volta."],
-  ["vendas", "Vendas, retenção e receita", "Depois da captação: vender, reter e organizar a operação de receita."]
+  ["vendas", "Vendas, retenção e receita", "Depois da captação: vender, reter e organizar a operação de receita."],
+  ["direcao", "Direção visual e acabamento", "Decidir a cara da página, criticar o que foi feito e tirar o aspecto genérico."],
+  ["paginas", "Páginas prontas por tipo de negócio", "Receitas completas de página para um tipo de cliente. Servem de ponto de partida."],
+  ["estilos", "Sistemas de estilo", "Identidades visuais prontas: cada skill é um estilo completo de layout, cor e tipografia."],
+  ["rolagem", "História por rolagem e movimento", "A página conta a história conforme a pessoa rola: cenas, capítulos e transições."],
+  ["gsap", "Animação com GSAP", "As skills oficiais do GSAP: o código certo de animação, linha do tempo e rolagem."],
+  ["efeitos", "Efeitos, fundos e partículas", "Um efeito por skill: fundos, rastros de cursor, partículas, globos e clima."],
+  ["componentes", "Componentes e detalhes de interface", "Peças pequenas de acabamento: bordas, sombras, vidro, ícones e faixas."],
+  ["three", "Three.js: base técnica", "A API atual do three.js (r186): cena, modelos, luz, animação, interação e desempenho."],
+  ["3d", "3D realista: cenas, materiais e natureza", "Receitas de cenas e materiais prontos, para usar por cima da base técnica."],
+  ["ilustracao", "Ilustração em SVG", "Catorze estilos de ilustração escritos à mão em SVG, cada um com paleta e kit de desenho."],
+  ["midia", "Vídeo, avatar e imagens por código", "Vídeos montados em HTML, cortes verticais, avatar, narração e bancos de imagem."],
+  ["captura", "Referências, prompts e fluxo de trabalho", "Capturar referências, transformar em prompt, verificar, medir e entregar o trabalho."],
+  ["jogos", "Jogos no navegador", "Construir, testar e publicar jogos em three.js: fases, câmera, inimigos, efeitos e combate."]
 ];
+/* Duas trilhas: a de marketing e a de construção, que começa no grupo "direcao". */
+const TRACK_NAMES = ["Marketing e redes sociais", "Construção: site, movimento, 3D e mídia"];
+const TRACK_START = GROUPS.findIndex(g => g[0] === "direcao");
+const trackOf = id => (GROUPS.findIndex(g => g[0] === id) >= TRACK_START ? 1 : 0);
 
 /* [grupo, plugin, skill, para que serve, exemplo de pedido, requisito, é a entrada da etapa]
    requisito: "" | "sc" (chave ScrapeCreators) | "woop" (WoopSocial) | "ext:Ferramenta" */
@@ -304,13 +336,11 @@ const SKILLS = [
 ["inicio","E","estudio","Porta de entrada. Você descreve o que precisa; ele acha o projeto do cliente, escolhe as skills certas, conduz a etapa e para para pedir sua aprovação.","monta o calendário de dezembro da Padaria Aurora","",1],
 ["inicio","E","novo-projeto","Abre a pasta de um cliente novo, aproveita o projeto de marca que já existir e monta o contexto que todas as outras skills leem.","Padaria Aurora, o brand book está na pasta marca/","",0],
 ["inicio","E","base-de-conhecimento","Mostra o que o estúdio tem: regras, qual skill usar em cada etapa, fluxos prontos e o catálogo completo.","qual skill uso para carrossel no LinkedIn?","",0],
-
 ["contexto","M","product-marketing","Cria ou atualiza o documento de contexto de marketing: produto, cliente ideal, posicionamento e concorrentes. As skills de marketing leem esse arquivo primeiro.","monta o contexto de marketing da marca","",1],
 ["contexto","S","brand-profile","Cria o perfil de marca para as redes: quem é, a quem serve, como soa e o que não diz. Rode antes de qualquer outra skill de redes sociais.","configura o perfil de marca do cliente","",1],
 ["contexto","S","voice-builder","Monta um guia de voz a partir de textos reais da pessoa ou da marca, para os posts soarem como ela e não como IA.","analisa estes 10 posts e monta o guia de voz","",0],
 ["contexto","S","writing-style-and-tone","Técnica de escrita aplicada: ritmo, especificidade, modulação de tom e como tirar do texto a cara de genérico.","deixa este texto menos genérico e mais com a nossa cara","",0],
 ["contexto","S","audience-research","Aprofunda quem é o público: o que ele quer resolver, dores, objeções e as palavras que usa de verdade. Gera o arquivo de público.","para quem a marca cria conteúdo?","",0],
-
 ["pesquisa","M","customer-research","Conduz ou sintetiza pesquisa com clientes: o que citações, avaliações e feedbacks revelam e como usar isso no marketing.","sintetiza estas 40 avaliações de clientes","",1],
 ["pesquisa","P","competitor-social-research","Pesquisa a estratégia dos concorrentes nas redes com dados públicos: compara marcas ou criadores e mostra o que funciona para cada um.","compara @marcaA, @marcaB e @marcaC no Instagram","sc",1],
 ["pesquisa","P","outlier-post-finder","Acha posts e vídeos que performaram muito acima da média de uma conta ou de um nicho.","quais posts de café especial estouraram este mês?","sc",1],
@@ -330,7 +360,6 @@ const SKILLS = [
 ["pesquisa","S","content-audit","Auditoria da conta e do conteúdo atual: o que manter, o que cortar e o que refazer.","audita o Instagram do cliente","",0],
 ["pesquisa","S","viral-reverse-engineering","Explica por que um conteúdo estourou, seu ou de outra conta, e extrai o padrão que dá para repetir.","por que este Reels estourou?","",0],
 ["pesquisa","S","content-research-and-sourcing","Checa a substância de uma peça antes de publicar: rastreia cada dado até a fonte primária.","confere os números deste carrossel","",0],
-
 ["estrategia","M","marketing-plan","Plano completo de marketing ou de entrada no mercado, para um cliente ou para produto próprio.","plano de marketing de 6 meses","",1],
 ["estrategia","S","social-strategy","Define a estratégia de redes: em quais canais focar, quais ignorar e o que fazer em cada um.","em quais redes a marca deve estar?","",1],
 ["estrategia","S","content-pillars","Define os 3 a 5 temas recorrentes sobre os quais a marca posta. É a ponte entre o perfil de marca e o calendário.","define os pilares de conteúdo","",0],
@@ -343,7 +372,6 @@ const SKILLS = [
 ["estrategia","M","offers","Desenha ou melhora a oferta em si: por que não está vendendo e como dar urgência de forma legítima.","por que a oferta não está vendendo?","",0],
 ["estrategia","M","pricing","Preço, pacotes e monetização: quanto cobrar e se é hora de aumentar.","quanto cobrar pelo plano anual?","",0],
 ["estrategia","M","marketing-loops","Desenha rotinas recorrentes de marketing para um agente executar em cadência.","rotina semanal de monitoramento de concorrentes","",0],
-
 ["calendario","S","content-calendar","Monta o calendário: um ritmo sustentável de postagem, com pilares e formatos definidos por dia.","calendário semanal para Instagram e LinkedIn","",1],
 ["calendario","S","batch-content-plan","Planeja e produz de uma vez o lote de conteúdo de uma semana ou de um mês.","lote de posts de dezembro","",0],
 ["calendario","S","seasonal-and-moment-marketing","Mapeia as poucas datas sazonais, culturais e comerciais do ano que realmente servem à marca.","datas do primeiro semestre que fazem sentido para nós","",0],
@@ -352,7 +380,6 @@ const SKILLS = [
 ["calendario","M","public-relations","Imprensa e mídia espontânea: o que é notícia e o que dizer ao jornalista.","pauta e abordagem para a imprensa local","",0],
 ["calendario","M","events","Planejar, realizar, patrocinar ou palestrar em eventos e webinars, e avaliar se o custo compensa.","vale patrocinar este evento?","",0],
 ["calendario","M","co-marketing","Acha parceiros e desenha campanhas conjuntas.","marcas parceiras para uma ação conjunta","",0],
-
 ["angulos","S","idea-generation-and-ideation","Sistema para nunca ficar sem ideia de conteúdo, em vez de esperar a inspiração.","30 ideias de post a partir dos pilares","",1],
 ["angulos","S","educational-content-and-how-to","Conteúdo que ensina: escolhe um tema útil e ensina uma coisa só, por inteiro.","post ensinando a escolher um bom café","",0],
 ["angulos","S","storytelling-and-narrative","Aplica estrutura de história (tensão, transformação, desfecho) a qualquer conteúdo.","conta a história da fundação da marca","",0],
@@ -365,7 +392,6 @@ const SKILLS = [
 ["angulos","S","meme-and-culture","Participar de memes e da cultura da internet como marca, sem passar vergonha.","dá para a marca entrar neste meme?","",0],
 ["angulos","S","trend-jacking","Entrar numa tendência (som, formato, meme ou notícia) com critério: se vale e como executar.","vale entrar na trend desta semana?","",0],
 ["angulos","S","data-and-original-research","Pesquisa própria: transforma dados, enquete ou análise em conteúdo de autoridade.","post com os dados da nossa pesquisa com clientes","",0],
-
 ["texto","S","hook-writer","Escreve o gancho: a abertura que segura a atenção em legenda, vídeo, carrossel ou thread.","10 ganchos para um vídeo sobre café coado","",1],
 ["texto","S","caption-writer","Legendas nativas de cada plataforma, na voz da marca.","legenda para esta foto do novo cardápio","",0],
 ["texto","S","carousel-writer","Carrossel slide a slide para Instagram, LinkedIn ou TikTok, com direção de design e prompts de imagem.","carrossel sobre café coado para o Instagram","",0],
@@ -376,7 +402,6 @@ const SKILLS = [
 ["texto","S","reply-and-comment-writer","Respostas, comentários e mensagens diretas que geram conversa e comunidade.","responde estes 12 comentários","",0],
 ["texto","S","linkedin-post-writer","Post de LinkedIn: profissional, de autoridade ou de fundador.","post de LinkedIn sobre a contratação da equipe","",0],
 ["texto","M","social","Conteúdo orgânico para LinkedIn, X, Instagram, TikTok e Facebook numa skill só. Boa para resposta rápida e geral.","o que postar esta semana?","",0],
-
 ["video","S","short-form-video-script","Roteiro de vídeo curto vertical (Reels, TikTok, Shorts) pensado para ser visto até o fim.","roteiro de 30 segundos sobre o pão de fermentação natural","",1],
 ["video","S","reels-script","Roteiro de Reels do Instagram, que funciona mesmo sem som.","roteiro de Reels mostrando a receita","",0],
 ["video","S","tiktok-script","Roteiro de TikTok, pensado para a descoberta e para o uso de som.","roteiro de TikTok com a trend do momento","",0],
@@ -387,7 +412,6 @@ const SKILLS = [
 ["video","S","podcast-and-audiograms","Do podcast para as redes: cortes curtos, legendados, e audiogramas.","cortes do episódio 12 para as redes","",0],
 ["video","S","livestream-and-realtime","Lives: planejar, divulgar, conduzir e reaproveitar depois.","planeja a live de lançamento","",0],
 ["video","M","video","Vídeo de produto feito com IA ou por código: gravação de tela, avatar ou animação, e qual abordagem usar.","vídeo de demonstração do aplicativo","",0],
-
 ["visual","S","image-prompt","Ponto de partida de qualquer imagem: transforma a necessidade do post em briefing e encaminha para a ferramenta certa.","imagem de capa para o carrossel","",1],
 ["visual","S","design-and-templates","Sistema de templates da marca: kit de marca e um conjunto pequeno de modelos reutilizáveis.","modelos de post para a marca","",0],
 ["visual","S","canva","Produzir peças no Canva em escala, dentro da marca e sem cair na cara de template.","monta os posts da semana no Canva","ext:Canva",0],
@@ -400,7 +424,6 @@ const SKILLS = [
 ["visual","S","flux","Prompts para o FLUX: gerar e editar imagens dentro da marca, com a variante e a licença certas.","série de imagens no estilo da marca","ext:FLUX",0],
 ["visual","S","ai-image-editing","Edição de imagem com IA: remover objeto ou fundo, ampliar, estender e restaurar, na ferramenta certa.","remove o fundo destas fotos de produto","ext:editor de IA",0],
 ["visual","M","image","Imagens de marketing para site e anúncios: gerar, editar e otimizar, e qual abordagem escolher.","imagem principal da página de vendas","",0],
-
 ["ia","S","ai-video","Ponto de partida de vídeo com IA: escreve o briefing e indica a ferramenta certa para o trabalho.","qual ferramenta uso para um vídeo de produto?","ext:ferramenta de IA",1],
 ["ia","S","veo-3","Prompts para o Google Veo: gerar ou animar vídeo para redes.","cena de café sendo coado em câmera lenta","ext:Veo",0],
 ["ia","S","kling","Vídeo generativo no Kling: 4K, sequência de vários planos e transferência de movimento.","sequência de 3 planos do produto","ext:Kling",0],
@@ -411,12 +434,10 @@ const SKILLS = [
 ["ia","S","ai-voiceover","Narração com voz de IA, a partir do ElevenLabs.","narração para o vídeo de 30 segundos","ext:ElevenLabs",0],
 ["ia","S","suno","Músicas completas, música de marca e trilhas no Suno, com atenção ao plano e à licença.","jingle de 15 segundos para a marca","ext:Suno",0],
 ["ia","S","ai-music-and-sound","Trilha e desenho de som para Reels e TikTok, originais ou licenciados, com segurança de direitos.","trilha de fundo para o Reels","ext:ferramenta de IA",0],
-
 ["edicao","S","captions-and-clipping","Transforma vídeo longo em cortes curtos e põe legendas para quem assiste sem som.","cortes do webinar para Reels","ext:Opus Clip ou CapCut",1],
 ["edicao","S","capcut","Edição de vídeo curto no CapCut, rápida e segura, no ritmo que segura a audiência.","edita este vídeo no CapCut","ext:CapCut",0],
 ["edicao","S","descript","Edição de conteúdo falado (podcast, entrevista) no Descript, editando pela transcrição.","limpa a entrevista no Descript","ext:Descript",0],
 ["edicao","S","opus-clip","Transforma vídeo longo em cortes publicáveis no OpusClip.","10 cortes do podcast","ext:OpusClip",0],
-
 ["plataformas","S","instagram-growth","Crescer no Instagram: diagnostica onde o crescimento está travado e o que fazer.","por que o Instagram parou de crescer?","",1],
 ["plataformas","S","tiktok-growth","Crescer no TikTok: diagnóstico e plano para a conta.","plano de crescimento no TikTok","",0],
 ["plataformas","S","tiktok-photo-mode","Carrossel de fotos no TikTok (photo mode).","carrossel de fotos no TikTok com o cardápio","",0],
@@ -428,24 +449,20 @@ const SKILLS = [
 ["plataformas","S","facebook-strategy","Estratégia de Facebook: recuperar alcance e definir o que ainda funciona.","o que ainda funciona no Facebook?","",0],
 ["plataformas","S","facebook-groups","Grupos do Facebook como canal orgânico.","vale criar um grupo de clientes?","",0],
 ["plataformas","S","reddit-marketing","Orientação para a marca aparecer no Reddit com credibilidade. Só aconselha, não publica.","como a marca deve participar no Reddit?","",0],
-
 ["descoberta","S","social-seo","Fazer o conteúdo ser encontrado na busca das redes: palavras-chave em legenda, texto na tela e fala.","palavras-chave para os vídeos de receita","",1],
 ["descoberta","S","instagram-seo","Busca dentro do Instagram: palavras-chave no perfil, na legenda e no texto alternativo.","otimiza o perfil para a busca do Instagram","",0],
 ["descoberta","S","pinterest-seo","Busca do Pinterest: a camada de palavras-chave que acompanha o design do pin.","palavras-chave para os pins da coleção","",0],
 ["descoberta","S","hashtag-strategy","Estratégia de hashtags e de descoberta na abordagem atual, não na antiga.","hashtags para os posts de dezembro","",0],
 ["descoberta","S","ai-search-optimization","Fazer a marca ser citada e recomendada pelas IAs de resposta (ChatGPT, Perplexity, Google).","a marca aparece quando perguntam ao ChatGPT?","",0],
-
 ["publicar","S","platform-specs-and-validation","Confere se cada peça cumpre os requisitos da plataforma antes de publicar em várias redes.","confere se estes posts estão no formato certo","",1],
 ["publicar","S","scheduling-and-queue","Agenda, enfileira ou publica posts prontos nas contas conectadas, pela WoopSocial.","agenda os posts aprovados da semana","woop",0],
 ["publicar","S","instagram-reels-publishing","Configuração de publicação de Reels: capa, legenda, áudio e opções de postagem.","configura a publicação do Reels de sexta","woop",0],
 ["publicar","S","tiktok-video-publishing","Configuração de publicação de vídeo no TikTok: privacidade, opções e divulgação de publicidade.","configura a publicação do vídeo no TikTok","woop",0],
 ["publicar","S","youtube-publishing-and-metadata","Título, descrição, tags e demais metadados de publicação no YouTube.","título e descrição para o vídeo novo","woop",0],
-
 ["comunidade","S","engagement-routine","Desenha uma rotina diária de engajamento que cabe na agenda.","rotina de 20 minutos por dia de engajamento","",1],
 ["comunidade","S","community-management","Construir comunidade: transformar audiência em gente que conversa entre si.","como criar comunidade em volta da marca?","",0],
 ["comunidade","S","crisis-and-moderation","Quando algo dá errado: crise, ataque em massa, comentário negativo e moderação.","como responder a esta reclamação pública?","",0],
 ["comunidade","M","community-marketing","Decidir se vale ter comunidade própria, onde hospedar e como fazê-la crescer.","vale abrir um grupo de clientes no WhatsApp?","",0],
-
 ["site","M","cro","Mais conversão em página ou formulário: por que não converte e o que mudar primeiro.","por que a página de vendas não converte?","",1],
 ["site","M","copywriting","Escreve ou reescreve o texto de páginas: inicial, de venda, de preços, de recurso.","reescreve o texto da página inicial","",0],
 ["site","M","copy-editing","Edita, enxuga e revisa um texto que já existe: o que manter, cortar ou mudar.","revisa e enxuga este texto","",0],
@@ -455,7 +472,6 @@ const SKILLS = [
 ["site","M","paywalls","Telas de upgrade dentro do aplicativo: quando e com que força pedir o pagamento.","quando mostrar a tela de upgrade?","",0],
 ["site","M","site-architecture","Planeja ou reestrutura o site: quais páginas, navegação e estrutura de endereços.","estrutura de páginas para o site novo","",0],
 ["site","M","free-tools","Planeja uma ferramenta gratuita como marketing, como uma calculadora, e avalia se vale construir.","ideia de calculadora gratuita para atrair clientes","",0],
-
 ["seo","M","seo-audit","Auditoria de SEO técnico e de página: por que o tráfego caiu ou a página não aparece.","audita o SEO de exemplo.com.br","",1],
 ["seo","M","ai-seo","Fazer o site ser citado nas respostas de IA: ChatGPT, Perplexity e resumos do Google.","como aparecer nas respostas do ChatGPT?","",0],
 ["seo","M","schema","Adiciona, corrige ou valida dados estruturados (JSON-LD) e escolhe o tipo certo para cada página.","dados estruturados para a página de produto","",0],
@@ -464,7 +480,6 @@ const SKILLS = [
 ["seo","M","competitors","Cria ou audita páginas de comparação e de alternativa: 'X ou Y', 'alternativa a X'.","página comparando com o concorrente X","",0],
 ["seo","M","aso","Audita ou otimiza a página do aplicativo na App Store e no Google Play.","melhora a página do aplicativo na loja","",0],
 ["seo","M","directory-submissions","Lista o produto em diretórios e sites de avaliação e escolhe quais valem o esforço.","em quais diretórios vale cadastrar?","",0],
-
 ["email","M","emails","Cria ou melhora sequências automáticas de e-mail: o que enviar e quando.","sequência de boas-vindas em 5 e-mails","",1],
 ["email","S","link-in-bio-and-traffic","Link na bio e tráfego: transformar alcance em clique, inscrito e audiência própria.","o que colocar no link da bio?","",1],
 ["email","M","cold-email","E-mail frio para empresas: abertura, motivo do contato e sequência.","e-mail de primeiro contato para gerentes de RH","",0],
@@ -474,33 +489,274 @@ const SKILLS = [
 ["email","S","email-and-newsletter","Newsletter e e-mail para criadores e marcas: a audiência própria que as redes alimentam.","plano para lançar uma newsletter","",0],
 ["email","S","social-selling-and-dm","Venda por mensagem direta com consentimento, sem spam.","roteiro para atender quem chama no direct","",0],
 ["email","M","referrals","Programas de indicação e de afiliados: o que recompensar e quanto pagar.","programa de indicação para clientes","",0],
-
 ["pago","M","ads","Planeja, roda ou corrige anúncios no Google, na Meta e no LinkedIn.","estrutura de campanha na Meta com R$ 1.500 por mês","",1],
 ["pago","M","ad-creative","Escreve e avalia criativos de anúncio: qual título, gancho ou ângulo rodar e qual pausar.","10 variações de criativo para a promoção","",0],
 ["pago","M","conversion-tracking","Instala, audita ou corrige o rastreamento de conversão no Google Ads, Meta, GA4, LinkedIn e TikTok.","confere se o pixel está medindo as vendas","",0],
-
 ["criadores","M","influencer-marketing","Parcerias com criadores e embaixadores: quem combina, quanto pagar e como estruturar o programa.","programa com microinfluenciadores locais","",1],
 ["criadores","S","ugc-and-influencer","Parcerias pagas ou por permuta com criadores: briefing, direitos de uso e identificação de publicidade.","briefing para a criadora gravar o vídeo","",0],
 ["criadores","S","collabs-and-cross-promotion","Colaborações entre criadores, sem pagamento, para trocar audiência.","ideia de collab com a marca vizinha","",0],
 ["criadores","S","creator-monetization","Monetização para criadores: assinaturas, produtos e contratos com marcas.","como o perfil pode gerar receita?","",0],
-
 ["medicao","S","analytics-and-reporting","Relatório das redes: lê os dados da plataforma com honestidade e transforma em próximas ações.","relatório de novembro do Instagram","",1],
 ["medicao","M","analytics","Instala ou audita a medição do site e do produto e confere se a métrica está calculada certo.","o que devo medir no site?","",1],
 ["medicao","M","attribution","Descobre qual marketing gera receita e se um canal está funcionando de verdade.","qual canal trouxe as vendas do mês?","",0],
 ["medicao","M","ab-testing","Planeja, roda e lê testes A/B em página, e-mail e produto: o resultado é real?","plano de teste para o título da página","",0],
 ["medicao","S","experimentation-and-ab-testing","Testes em conteúdo orgânico, com o rigor possível quando a amostra é pequena.","testa dois ganchos nos Reels","",0],
-
 ["reaproveitar","S","cross-platform-repurposing","Transforma uma peça em vários posts nativos de cada plataforma, adaptando em vez de copiar.","adapta este vídeo para LinkedIn, X e Instagram","",1],
 ["reaproveitar","S","content-recycling","Reciclagem: traz de volta, atualiza e reposta o conteúdo perene que já deu certo.","quais posts antigos vale repostar?","",0],
 ["reaproveitar","P","content-repurposing","Transforma vídeos, transcrições e posts públicos de outras contas em ideias e peças reutilizáveis.","ideias a partir destes 5 vídeos do nicho","sc",0],
-
 ["vendas","M","churn-prevention","Reduzir cancelamento: fluxo de cancelamento, oferta de retenção e recuperação de pagamento.","por que os clientes estão cancelando?","",1],
 ["vendas","M","revops","Operação de receita: quando o contato está pronto para vendas, pontuação e roteamento.","quando passar o contato para o vendedor?","",0],
 ["vendas","M","sales-enablement","Material de vendas: apresentação, uma página, respostas a objeções e roteiro de demonstração.","material de uma página para o vendedor","",0],
-["vendas","M","prospecting","Encontra e qualifica possíveis clientes para abordagem ativa: quem procurar primeiro.","lista de empresas para abordar primeiro","",0]
+["vendas","M","prospecting","Encontra e qualifica possíveis clientes para abordagem ativa: quem procurar primeiro.","lista de empresas para abordar primeiro","",0],
+["direcao","I","impeccable","Direção de arte para interfaces. Uma skill com 24 comandos: criticar, auditar, refinar, animar e ajustar tipografia, cor e layout de site, página ou aplicativo. Escreva o comando depois do nome.","critique a página inicial","bin",1],
+["direcao","W","build-awwwards-quality-sites","Dirige e constrói sites de marketing, editoriais e portfólios com nível de premiação: imagens originais, abertura marcante, movimento e acabamento.","site de lançamento com nível de premiação","",1],
+["direcao","W","no-ai-design-slop","Evita e remove a cara de design genérico de IA enquanto cria ou revisa site, aplicativo ou mockup.","refaz esta página sem cara de IA","",0],
+["direcao","W","audit-ai-design-slop","Audita site, aplicativo ou captura de tela atrás de clichês de design de IA e de defeitos de interface, com evidência de cada um.","audita esta captura de tela","",0],
+["direcao","W","design-first-ui-prompting","Escreve prompts de geração de interface que começam pelo design: estrutura, restrições, variações e regras de tipografia e espaçamento.","prompt para gerar a página de preços","",0],
+["direcao","W","webgl-landing-steering","Conduz uma página com muito WebGL para o resultado visual desejado (premium, técnico, lúdico ou cinematográfico) sem perder desempenho.","deixa esta página 3D com cara mais premium","",0],
+["direcao","W","animation-systems","Sistema de movimento no padrão de Stripe, Linear e Apple: princípios, curvas, durações e coreografia.","define o sistema de animação do site","",0],
+["direcao","W","landing-page","Desenha ou reescreve uma página de venda de oferta única: estrutura, padrões de layout e estratégia de conversão.","página de venda para o curso","",0],
+["direcao","W","pricing-page","Desenha ou reescreve a página de preços: estrutura, planos, texto, perguntas frequentes e testes.","página de preços com 3 planos","",0],
+["direcao","W","tailwindcss","Receitas e convenções para construir interface com Tailwind CSS: layout, tipografia, responsivo e temas.","monta o cabeçalho com Tailwind","",0],
+["paginas","W","documentary-brutalist-agency","Site de agência, produtora, arquitetura ou cultura em estilo documental brutalista: tipografia de outdoor e capítulos em preto e branco.","site da produtora de vídeo","",0],
+["paginas","W","editorial-portfolio-chapters","Site de estúdio, fotógrafo ou artista em que os projetos conduzem a história, em capítulos editoriais de fundo escuro.","portfólio do fotógrafo","",0],
+["paginas","W","editorial-service-booking","Site de serviço com agendamento (salão, barbearia, spa, clínica, hospedagem) em layout editorial acolhedor.","site da barbearia com agendamento","",0],
+["paginas","W","operational-enterprise-ai","Página de produto de IA, automação ou segurança para empresas, que explica limites, aprovações e auditoria.","página do produto de automação","",0],
+["paginas","W","product-proof-saas","Página de produto de software em que a demonstração real do fluxo é a prova central.","página com o produto funcionando no centro","",0],
+["paginas","W","painted-product-showcase","Demonstração interativa do produto sobre paisagens pintadas, com painéis translúcidos e dados de exemplo.","vitrine do aplicativo financeiro","",0],
+["paginas","W","compose-a-woodland-landing-page","Página botânica em seis capítulos, como um guia de campo: páginas claras, cartões escuros e cenas vivas de floresta.","página de marca de produtos naturais","",0],
+["paginas","W","neoclassical-ledger-ui","Interface editorial em pergaminho, com pinturas neoclássicas e tipografia de livro-caixa, para portfólio ou finanças.","página institucional do escritório","",0],
+["paginas","W","html-demo","Mostra um aplicativo funcionando dentro da página, desenhado ao vivo em HTML em vez de gravado em vídeo.","demonstração do aplicativo na página inicial","",0],
+["estilos","W","agency-grid-layout-minimal","Estilo de agência minimalista: grade editorial rigorosa, tipografia enorme e rótulos discretos em caixa alta.","aplica este estilo ao site da agência","",0],
+["estilos","W","blue-cloudy-clean-modern","Estilo limpo e moderno com atmosfera de céu azul, luz de nuvem e moldura branca.","página com atmosfera de céu azul","",0],
+["estilos","W","blue-laser-clean-glass-layout","Estilo de vidro escuro com um fio de laser azul, superfícies foscas e estrutura de painel.","painel em vidro escuro com laser azul","",0],
+["estilos","W","book-serif-index","Estilo de livro de arquivo: páginas com serifa, índice em fonte mono, papel envelhecido e notas de margem.","site com cara de livro antigo","",0],
+["estilos","W","bright-green-tech-system-webgl","Estilo técnico em verde vivo: layout dividido, superfícies escuras emolduradas e área de visualização em WebGL.","página técnica em verde vivo","",0],
+["estilos","W","clean-minimal-beige-light-mode","Estilo claro minimalista em bege: neutros quentes, grades discretas e cor de destaque contida.","página clara em tons de bege","",0],
+["estilos","W","dark-blue-contrasting-clean","Estilo azul-escuro de alto contraste, com blocos em degradê cobalto e brilho contido.","página em azul-escuro de alto contraste","",0],
+["estilos","W","dark-glass-clean-layout","Estilo de vidro escuro: superfícies foscas, estrutura em colunas e cartões de dados flutuantes.","layout em vidro escuro","",0],
+["estilos","W","dither-laser-dark-mode","Estilo escuro premium com textura pontilhada e um fio de laser na cor de destaque.","página escura com textura pontilhada","",0],
+["estilos","W","editorial-tech","Mistura de revista com tecnologia: grades assimétricas, faixas de mídia cinematográficas e rótulos em fonte mono.","página de produto com cara de revista","",0],
+["estilos","W","framed-tech-dark-border-gradient","Estilo técnico escuro emoldurado, com bordas em degradê e painéis assimétricos.","página técnica com bordas em degradê","",0],
+["estilos","W","funky-purple-container-tech","Estilo técnico escuro com roxo e fúcsia, caixas arredondadas em camadas e objetos futuristas.","página de tecnologia em roxo","",0],
+["estilos","W","glass-dark-mode-clock","Estilo de vidro escuro com mostradores circulares de relógio e moldura de instrumento de ficção científica.","página com mostradores de instrumento","",0],
+["estilos","W","high-contrast-skeuomorphic-clean","Estilo esqueumórfico limpo e de alto contraste: superfícies moldadas e profundidade tátil.","interface com botões de aparência física","",0],
+["estilos","W","image-first-grid-layout","Estilo guiado por fotografia: imagens de borda a borda, linhas-guia e blocos de conteúdo ancorados.","página guiada por fotos grandes","",0],
+["estilos","W","light-mode-paper-technical","Estilo técnico claro em tom de papel, com moldura escura, textura diagonal e geometria precisa.","página técnica em tom de papel","",0],
+["estilos","W","mesh-gradient-dark-blue-clean","Estilo futurista em azul-escuro com fundo em malha de degradê, da navegação aos botões.","página com fundo em degradê azul","",0],
+["estilos","W","nested-container-clean-agency","Estilo de agência em caixas aninhadas: moldura editorial, blocos escuros embutidos e cartões arredondados.","site de agência em caixas aninhadas","",0],
+["estilos","W","orange-clean-paper-saas","Estilo de produto de software em tom de papel, com laranja de destaque e formas arredondadas.","página de software com laranja","",0],
+["estilos","W","split-layout-technical","Estilo técnico em tela dividida: dois painéis, linhas finas e metadados em fonte mono.","página em tela dividida","",0],
+["estilos","W","tech-green-dark-mode-modern","Estilo técnico escuro moderno: preto fosco, verde-esmeralda de sinal e cartões de painel.","painel escuro com verde-esmeralda","",0],
+["estilos","W","technical-wireframe-info-layout","Estilo de diagrama técnico monocromático: estrutura 3D explodida, anotações e rótulos esparsos.","página com diagrama explodido do produto","",0],
+["estilos","W","sylva-field-guide-layout","Layout editorial botânico: linhas verticais contínuas, tipografia grande e leve e legendas de espécime.","layout de guia de campo","",0],
+["estilos","W","framed-grid-layout","Grade minimalista emoldurada: linhas de borda visíveis, cantoneiras em L e alinhamento rigoroso.","grade emoldurada para a página","",0],
+["estilos","W","nested-container-frames","Layout de caixa dentro de caixa: moldura externa centralizada com linhas verticais e marcadores de canto.","estrutura de caixas aninhadas","",0],
+["rolagem","W","build-threejs-scroll-worlds","Constrói uma experiência 3D contínua controlada pela rolagem: um só mundo em que câmera, luz, objetos e texto contam a história.","percurso pela quadra revelando os personagens","",1],
+["rolagem","W","scroll-world-storytelling","Transforma artigo, caso, narrativa de marca ou jornada de produto em página cinematográfica guiada pela rolagem.","história da marca em página de rolagem","",1],
+["rolagem","W","cinematic-scroll-storytelling","Página cinematográfica com rolagem suave (Lenis) e GSAP: texto que se revela, pilhas de cartões e progressão por cenas.","página de lançamento com cenas por rolagem","",0],
+["rolagem","W","cinematic-gsap-lenis-motion-system","Sistema de movimento cinematográfico com GSAP, ScrollTrigger e Lenis, para sites editoriais de luxo e portfólios.","sistema de movimento para o site","",0],
+["rolagem","W","gsap-scrolltrigger-storytelling","Narrativa de produto com seções fixas, revelações progressivas e animação sincronizada à rolagem.","apresenta o produto em seções fixas","",0],
+["rolagem","W","horizontal-scroll-scenes","Capítulos que avançam da esquerda para a direita num palco fixo enquanto a pessoa rola para baixo.","capítulos em rolagem horizontal","",0],
+["rolagem","W","scroll-progress-timeline","Transforma um processo em linha do tempo vertical ou horizontal, com barra de progresso e etapa ativa.","linha do tempo da história da marca","",0],
+["rolagem","W","scroll-scrubbed-object-handoff","Passagem de cena em que um objeto se transforma e as peças pousam na cena seguinte, reversível com a rolagem.","a bola sai de uma cena e cai na outra","",0],
+["rolagem","W","scroll-scrubbed-visual-sequence","Transformação visual controlada pela rolagem num palco fixo, com vídeo, sequência de imagens, canvas ou SVG.","sequência de imagens controlada pela rolagem","",0],
+["rolagem","W","scroll-scrubbed-word-reveal","Revela o texto palavra por palavra conforme a rolagem, preservando links e leitura acessível.","revela o manifesto palavra por palavra","",0],
+["rolagem","W","scroll-mesh-survey","Passa uma varredura de malha sobre um objeto 3D conforme a rolagem, nos dois sentidos.","varredura do produto 3D ao rolar","",0],
+["rolagem","W","masked-reveal","Títulos que se revelam palavra por palavra por trás de uma máscara, com GSAP ScrollTrigger.","título que se revela ao entrar na tela","",0],
+["rolagem","W","staggered-word-reveal","Revelação sutil de texto: cada palavra surge e sobe ao entrar na tela.","revelação suave do título","",0],
+["rolagem","W","animation-on-scroll","Animação ao rolar com IntersectionObserver e classes do Tailwind, sem biblioteca.","elementos que aparecem ao rolar","",0],
+["rolagem","W","paper-cinder-transition","Transição entre páginas ou cenas com efeito de papel queimando.","transição de papel queimando entre capítulos","",0],
+["rolagem","W","gsap","Adicionar ou depurar animações com GSAP em HTML, JS ou React. Para a API oficial e atual, prefira o plugin gsap-skills.","anima a entrada dos cartões","",0],
+["rolagem","W","woodland-chapter-cameras","Um vale 3D vivo, com riacho, árvores e neblina, visto por posições de câmera diferentes na abertura, no capítulo e no rodapé.","cena de fundo que muda de câmera por capítulo","",0],
+["gsap","G","gsap-core","API central do GSAP: to, from, fromTo, curvas, duração, escalonamento e animação responsiva.","anima a entrada dos elementos da abertura","",1],
+["gsap","G","gsap-timeline","Linhas do tempo: sequenciar, posicionar, aninhar e controlar a reprodução das animações.","sequência de entrada dos personagens","",0],
+["gsap","G","gsap-scrolltrigger","ScrollTrigger: animação ligada à rolagem, seções fixas, avanço proporcional e paralaxe.","fixa a seção e anima conforme a rolagem","",0],
+["gsap","G","gsap-plugins","Plugins do GSAP: ScrollSmoother, Flip, Draggable, SplitText, física, SVG e curvas personalizadas.","divide o título em letras e anima","",0],
+["gsap","G","gsap-react","GSAP em React e Next.js: hook useGSAP, referências, contexto e limpeza.","anima este componente React","",0],
+["gsap","G","gsap-frameworks","GSAP em Vue, Svelte e outros: ciclo de vida, escopo de seletores e limpeza.","anima este componente Vue","",0],
+["gsap","G","gsap-utils","Utilitários do GSAP: clamp, mapRange, interpolate, random, snap, toArray e wrap.","mapeia a rolagem para a rotação","",0],
+["gsap","G","gsap-performance","Desempenho no GSAP: animar transformações, evitar recálculo de layout e manter 60 quadros por segundo.","a animação está travando no celular","",0],
+["efeitos","W","add-mouse-driven-orbit","Órbita e paralaxe discretas guiadas pelo mouse numa abertura em three.js.","a cena acompanha o mouse de leve","",0],
+["efeitos","W","add-shader-cursor-trail","Rastro de cursor em meio-tom cintilante, feito com shaders em WebGPU.","rastro de cursor pontilhado na abertura","",0],
+["efeitos","W","ambient-section-particles","Partículas de ambiente dentro de uma seção, com forma, densidade, gravidade e vento configuráveis.","poeira flutuando na seção","",0],
+["efeitos","W","atmosphere-background","Fundo escuro atmosférico, com dobras de luz e brilho concentrado num canto.","fundo atmosférico escuro","",0],
+["efeitos","W","background-grid-webgl","Fundo em grade com perspectiva em WebGL, névoa de partículas e paralaxe suave.","fundo em grade com perspectiva","",0],
+["efeitos","W","build-interactive-particle-trail","Rastro de partículas que segue o cursor ou o toque, com explosões opcionais pelo teclado.","rastro de partículas no cursor","",0],
+["efeitos","W","build-wireframe-scan-reveal","Revela um objeto 3D com uma varredura em que a malha de arame aparece antes da superfície sólida.","revela o modelo com varredura","",0],
+["efeitos","W","corner-lasers","Composição de lasers ancorada num canto, com feixes finos, brilho e névoa.","lasers saindo do canto da abertura","",0],
+["efeitos","W","dither-ascii-ink-hover","Revela pontos de retícula e caracteres sob o cursor numa ilustração, como uma inspeção impressa.","efeito de retícula ao passar o mouse","",0],
+["efeitos","W","dither-background","Fundo escuro monocromático com pixels grandes e pontilhado ordenado.","fundo pontilhado escuro","",0],
+["efeitos","W","falling-leaves","Folhas caindo que parecem folhas: cada uma gira no próprio eixo e deriva com o vento.","folhas caindo na seção","",0],
+["efeitos","W","fire-paper-loader","Indicador de carregamento em anel de papel queimando, que não trava enquanto a página carrega.","carregador de papel queimando","",0],
+["efeitos","W","globe-particles","Globo de partículas luminosas, com núcleo denso e anel orbital.","globo de partículas na abertura","",0],
+["efeitos","W","gooey-blob-system","Formas que se fundem numa massa fluida, feitas com filtros SVG.","bolhas que se fundem","",0],
+["efeitos","W","gradient-border-flashlight","Lanterna que segue o cursor e ilumina a superfície e a borda dos cartões vizinhos.","luz do cursor nos cartões","",0],
+["efeitos","W","pointer-trail-emitter","Rastro de cursor com espaçamento constante em qualquer velocidade da mão.","rastro de cursor uniforme","",0],
+["efeitos","W","pollen-pointer-trail","Rastro esparso de pólen saindo do cursor sobre uma cena de floresta.","rastro de pólen no cursor","",0],
+["efeitos","W","reveal-hover-effect","Holofote que segue o cursor e revela uma segunda imagem alinhada: antes e depois, raio X, cor.","revela a versão colorida ao passar o mouse","",0],
+["efeitos","W","shaders-cursor-ripples","Ondulação fluida que segue o cursor sobre uma imagem, em WebGPU.","ondas na foto da abertura","",0],
+["efeitos","W","webgl-laser","Fundo de laser em tela cheia, com núcleo branco, halo na cor da marca e névoa.","fundo de laser na cor da marca","",0],
+["efeitos","W","webgl-3d-object","Um objeto 3D de verdade em WebGL, com material físico, luz, rotação sutil e flutuação.","objeto 3D flutuando na abertura","",0],
+["efeitos","W","vantajs","Fundos animados em WebGL com Vanta.js: configuração, parâmetros e desempenho.","fundo animado com Vanta","",0],
+["efeitos","W","unicorn-studio","Incorporar e ajustar animações interativas do Unicorn Studio na página.","incorpora a cena do Unicorn Studio","ext:Unicorn Studio",0],
+["efeitos","W","cobejs","Globo interativo leve com a biblioteca cobe: marcadores, interação e desempenho.","globo com as cidades atendidas","",0],
+["efeitos","W","globe-gl","Globo 3D de dados com globe.gl: pontos, arcos, polígonos e rótulos.","globo com as rotas de entrega","",0],
+["efeitos","W","matterjs","Interações de física 2D com Matter.js: corpos, restrições e reação à rolagem.","etiquetas que caem e se empilham","",0],
+["efeitos","W","threejs-landscape","Paisagem viva em three.js que fica discreta atrás do assunto principal.","paisagem de fundo atrás do produto","",0],
+["efeitos","W","threejs-towers","Gera arquitetura por parâmetros em three.js (pagodes, castelos, cúpulas) e filma a montagem.","castelo que se monta sozinho","",0],
+["efeitos","W","threejs-weather","Clima numa cena three.js: chuva, tempestade e relâmpago que parecem de verdade.","chuva na cena de abertura","",0],
+["componentes","W","beam-glow-states","Estados de carregando, selecionado e foco com brilho animado na borda, em React.","brilho na borda do cartão selecionado","",0],
+["componentes","W","beautiful-shadows","Sombras em camadas, neutras e bem-acabadas, com utilitários do Tailwind.","sombras melhores nos cartões","",0],
+["componentes","W","company-logos","Usa logotipos de empresas do Iconify (Simple Icons) em vez de nomes em texto.","faixa de logotipos de clientes","",0],
+["componentes","W","container-lines","Linhas-guia verticais de largura de conteúdo, com quadradinhos de canto.","linhas-guia no layout","",0],
+["componentes","W","corner-diagonals","Cantos cortados em diagonal em botões, cartões e painéis.","botões com canto chanfrado","",0],
+["componentes","W","css-alpha-masking","Máscara de transparência em CSS para esmaecer bordas na horizontal ou na vertical.","esmaece as bordas do carrossel","",0],
+["componentes","W","css-border-gradient","Borda em degradê sutil para cartões, painéis de preço, barras e botões.","borda em degradê nos cartões de preço","",0],
+["componentes","W","glass-dark-ui","Interface de vidro em modo escuro, com contraste legível, superfícies foscas e borda em degradê.","cartões de vidro em modo escuro","",0],
+["componentes","W","liquid-metal-border","Borda de metal líquido animada em WebGL para botões, abas e cartões, em React.","botão com borda de metal líquido","",0],
+["componentes","W","marquee-loop","Faixa rolante infinita e sem emenda.","faixa rolante de depoimentos","",0],
+["componentes","W","number-details","Marcadores numéricos decorativos: 01, 02, 03.","numera as seções","",0],
+["componentes","W","progressive-blur","Desfoque progressivo em camadas, no topo ou na base, só com CSS.","desfoque progressivo no rodapé","",0],
+["componentes","W","skeuomorphic-ui","Superfícies esqueumórficas: degradês em camadas, sombras internas e externas e relevo.","botão com aparência de tecla física","",0],
+["componentes","W","solar-duotone-bold","Usa o conjunto de ícones Solar Duotone Bold, do Iconify.","troca os ícones pelo conjunto Solar","",0],
+["componentes","W","thinking-orbs","Indicadores animados e acessíveis de carregamento de IA, em React.","indicador de pensando no chat","",0],
+["componentes","W","generate-ledger-logo-register","Gera uma família de logotipos fictícios e apresenta como painel de parceiros.","painel de logotipos fictícios de parceiros","ext:Seedream",0],
+["componentes","W","moss-glass-controls","Botões em pílula e cartões de vidro escuro, com degradê que percorre a borda ao passar o mouse.","botões de vidro escuro","",0],
+["componentes","W","refract-liquid-glass","Painéis de vidro líquido arrastáveis, que refratam o fundo ao vivo.","painel de vidro que distorce o fundo","",0],
+["componentes","W","segmented-field-menu","Menu de navegação em doca, com segmentos de ícone e rótulo.","menu em segmentos no topo","",0],
+["componentes","W","shade-glass-button-press","Botão de vidro que se deforma no ponto do toque e solta uma onda ao ser liberado.","botão de vidro que reage ao toque","",0],
+["three","T","threejs-fundamentals","Montagem de cena em three.js: cena, câmeras, renderizador, laço de animação, hierarquia e transformações.","cria a cena base da quadra","",1],
+["three","T","threejs-loaders","Carregar modelos glTF, texturas e ambientes HDR, com progresso, cache e descarte.","carrega os modelos dos personagens","",1],
+["three","T","threejs-animation","Animação por quadros-chave, de esqueleto e de expressão, e mistura de clipes.","toca a animação de corrida do personagem","",0],
+["three","T","threejs-interaction","Seleção por clique ou toque, controles de câmera, arrastar e passar o mouse sobre objetos 3D.","clicar no personagem abre a ficha","",0],
+["three","T","threejs-lighting","Tipos de luz, sombras, iluminação por ambiente HDR e desempenho da luz.","ilumina a quadra à noite","",0],
+["three","T","threejs-materials","Escolher e configurar materiais: sem luz, difuso, físico, cartum e seus parâmetros.","material de cartum para os personagens","",0],
+["three","T","threejs-textures","Texturas: carregamento, espaços de cor, mapeamento UV, tipos e memória.","aplica a textura da camisa","",0],
+["three","T","threejs-geometry","Formas prontas, texto 3D, geometria própria, instâncias e nuvens de pontos.","arquibancada com mil cadeiras em instâncias","",0],
+["three","T","threejs-shaders","Shaders próprios em GLSL e os mesmos efeitos em TSL no WebGPU.","shader de brilho na bola","",0],
+["three","T","threejs-postprocessing","Pós-processamento: brilho, profundidade de campo, oclusão de ambiente e efeitos de tela.","brilho e profundidade de campo na cena","",0],
+["three","T","threejs-performance","Medir e melhorar a velocidade: menos chamadas de desenho, instâncias, níveis de detalhe e memória.","a cena está pesada no celular","",0],
+["three","T","threejs-asset-pipeline","Reduzir modelos glTF com gltf-transform: compressão Draco e meshopt, texturas KTX2, WebP e AVIF.","reduz o tamanho dos modelos","",0],
+["three","T","threejs-react-three-fiber","Cenas three.js em React com React Three Fiber e drei.","cena 3D num componente React","",0],
+["three","W","threejs","Guia geral para construir e depurar cenas 3D com three.js. Para a API atual, prefira o plugin threejs-skills.","depura a cena que não aparece","",0],
+["3d","W","3d-virtual-tour","Passeio virtual guiado e interativo por um ambiente 3D, com caminhos de câmera e navegação por cômodo.","passeio virtual pela loja","",0],
+["3d","W","3d-feature-objects","Grade de recursos em que cada item é um objeto 3D iluminado que gira ao passar o mouse.","recursos do produto como objetos 3D","",0],
+["3d","W","3d-orbit-inspect-demo","O objeto 3D se inclina ao passar o mouse e abre uma visão de inspeção ao clicar, para girar na mão.","inspecionar o troféu em 3D","",0],
+["3d","W","hover-particle-dissolve","A superfície do modelo se desfaz em grãos sob o cursor e se recompõe quando ele sai.","o modelo se desfaz ao passar o mouse","",0],
+["3d","W","interactive-topography","Mapa de curvas de nível e relevo interativo, com anos, destaques e onda sísmica ao clicar.","mapa de relevo com linha do tempo","",0],
+["3d","W","control-camera-lenses","Distância focal, enquadramento, rastreio do assunto e foco raso de câmera fotográfica em three.js.","câmera com lente de retrato na cena","",0],
+["3d","W","light-a-threejs-workspace","Interior de escritório em three.js, com móveis texturizados, janela, persiana e luz do dia volumétrica.","cena de mesa de trabalho iluminada","",0],
+["3d","W","model-threejs-control-icons","Modela e ilumina ícones 3D detalhados para controles pequenos de interface.","ícones 3D para o menu","",0],
+["3d","W","relight-painted-surfaces","Luz que segue o cursor sobre uma pintura, figura 2D ou carta holográfica, usando mapas de profundidade e relevo.","carta holográfica que reage à luz","",0],
+["3d","W","3d-construction-sequence","Anima um prédio ou equipamento se montando, da estrutura de arame ao sólido acabado.","o estádio se monta na tela","",0],
+["3d","W","3d-survey-scan","Pulso de varredura que percorre a cena 3D e traça as arestas por um instante.","varredura sobre a cena","",0],
+["3d","W","3d-modular-buildings","Modela prédios em escala humana para ambientes em tempo real: ruas, fachadas modulares e telhados.","rua com fachadas em volta da quadra","",0],
+["3d","W","3d-high-poly-models","Cria ou integra modelos muito detalhados e prepara os níveis de detalhe para carregar bem.","modelo detalhado do troféu","",0],
+["3d","W","3d-high-resolution-textures","Materiais de alta resolução, nítidos e fisicamente coerentes, com carregamento progressivo.","texturas nítidas de perto","",0],
+["3d","W","3d-retina-resolution","Renderiza o 3D com nitidez em telas Retina e de alta densidade, com pós-processamento sincronizado.","o 3D está borrado no meu Mac","",0],
+["3d","W","3d-sky-background","Céu de fundo correto para a câmera, com atmosfera, névoa de horizonte e sol alinhado.","céu de fim de tarde na cena","",0],
+["3d","W","3d-sky-rays","Raios de sol e de crepúsculo numa cena 3D, respeitando o que bloqueia a luz.","raios de sol entre as nuvens","",0],
+["3d","W","3d-four-seasons","As quatro estações na mesma cena 3D: folhagem, luz, céu, chão, neve e partículas.","a cena muda de estação","",0],
+["3d","W","3d-falling-leaves","Folhas caindo no espaço 3D, com giro próprio, vento e reciclagem conforme a câmera.","folhas caindo na cena 3D","",0],
+["3d","W","3d-ultra-realistic-water","Oceano aberto ultrarrealista em three.js, com ondas, reflexo e espuma.","mar realista ao fundo","",0],
+["3d","W","3d-harbour-water","Água de porto ou canal, com reflexos de cais e letreiros, anéis de chuva e barcos.","porto à noite com reflexos","",0],
+["3d","W","3d-underwater-god-rays","Raios de luz volumétricos debaixo d'água.","cena submersa com raios de luz","",0],
+["3d","W","3d-kasumidera-ultra-realism","Ambientes caminháveis em estilo pictórico ultrarrealista: arquitetura gasta, montanhas em camadas e luz volumétrica.","templo caminhável em estilo pictórico","",0],
+["3d","W","3d-wood-material","Madeira convincente como material procedural: anéis, poros, marcas de ferramenta e acabamento.","mesa de madeira realista","",0],
+["3d","W","3d-wood-lighting-scorecard","Ilumina madeira entalhada num ambiente escuro e dá nota ao resultado.","ilumina a escultura de madeira","",0],
+["3d","W","3d-metal-material","Metal hiper-realista: aço, latão, ouro, cobre e ferro, em vários acabamentos.","troféu de ouro realista","",0],
+["3d","W","3d-cloth-material","Tecido convincente: trama no nível do fio, brilho, dobras, bainhas e costuras.","camisa de time com tecido realista","",0],
+["3d","W","3d-paper-material","Folha de papel que parece papel de perto: fibras, relevo e borda rasgada.","cartaz de papel na cena","",0],
+["3d","W","animate-procedural-birds","Modela e anima um pássaro pequeno, com asas que dobram e movimento de cabeça e cauda.","pássaro pousado na trave","",0],
+["3d","W","perching-butterfly","Borboleta 3D que voa, pousa numa planta de verdade e decola quando perturbada.","borboleta pousando na cena","",0],
+["3d","W","forest-floor-specimen","Estudo botânico 3D animado: samambaia, musgo e pedras.","detalhe botânico 3D na seção","",0],
+["ilustracao","W","illustration-flat","Ilustração vetorial chapada em SVG: pessoas esguias, sem contorno, em cena única.","ilustração chapada para a seção de recursos","",0],
+["ilustracao","W","illustration-flat-with-black","Ilustração chapada com o preto sólido como cor principal.","ilustração chapada com preto forte","",0],
+["ilustracao","W","illustration-outlined-cartoon","Cartum com contorno escuro quente em todas as formas.","ilustração em cartum com contorno","",0],
+["ilustracao","W","illustration-bold-pop","Estilo pop geométrico: contorno grosso azul-marinho e volumes sólidos.","ilustração pop para o cartaz","",0],
+["ilustracao","W","illustration-framed-panel","Cena de cartum dentro de um painel emoldurado, em cartão pastel.","cena em painel emoldurado","",0],
+["ilustracao","W","illustration-grainy-gouache","Guache granulado com cara de risografia, em cenas aconchegantes de animais.","ilustração em guache granulado","",0],
+["ilustracao","W","illustration-halftone-line","Traço preto firme com retícula de meio-tom.","ilustração com retícula","",0],
+["ilustracao","W","illustration-ink-sketch","Bichinhos e objetos vivos em nanquim, com traço de pincel que engrossa e afina.","mascote em nanquim","",0],
+["ilustracao","W","illustration-isometric-mono","Diorama isométrico de local de trabalho numa só gama de verde.","escritório isométrico em verde","",0],
+["ilustracao","W","illustration-line-interior","Interiores amplos em traço fino e uniforme, com pessoas realistas.","cena de interior em traço fino","",0],
+["ilustracao","W","illustration-one-line","Figuras em movimento desenhadas com uma única linha contínua.","jogador desenhado em uma linha só","",0],
+["ilustracao","W","illustration-teal-spot","Um objeto de destaque em vista de três quartos, em verde-azulado sobre branco.","ícone grande do produto","",0],
+["ilustracao","W","illustration-two-colour-brush","Marcador de pincel em duas cores, com traço grosso e irregular.","ilustração em marcador de duas cores","",0],
+["ilustracao","W","illustration-vintage-emblem","Emblema em estilo antigo, com paleta de serigrafia de sete cores.","emblema vintage do time","",0],
+["midia","W","html-reel","Transforma um post, vídeo ou página em vídeo vertical 9:16 para Reels, TikTok e Shorts, com cada corte numa palavra.","Reels a partir do vídeo do YouTube","ext:yt-dlp e Chrome",1],
+["midia","W","html-explainer-video","Transforma um produto ou uma ideia em vídeo explicativo de um minuto, com roteiro, narração e cenas em HTML.","vídeo de um minuto explicando o serviço","ext:voz de IA",0],
+["midia","W","url-to-motion-design","Transforma um filme de lançamento ou post num endereço em cenas de motion design em HTML.","cenas a partir do vídeo de lançamento","ext:Fil",0],
+["midia","W","long-video-to-short","Transforma um vídeo longo pronto em corte vertical de 60 segundos para Reels, Shorts e TikTok.","corte de 60 segundos do tutorial","",0],
+["midia","W","room-short-9x16","Corte vertical de 60 segundos ambientado no cômodo 3D do criador, renderizado no Blender.","corte com a demonstração no meu cenário","ext:Blender e GPU alugada",0],
+["midia","W","landing-page-to-tutorial","Cadeia completa de um tutorial longo de YouTube, da construção da página ao vídeo publicado. Feita para o canal do autor; use como modelo.","roteiro do tutorial de 20 minutos","",0],
+["midia","W","making-of-film","Filme de 4 a 5 minutos sobre como um projeto foi feito. Feita para o canal do autor; use como modelo.","filme de bastidores do site","",0],
+["midia","W","genjutsu-scene","Cena do apresentador dentro de qualquer mundo, falando com o próprio rosto e voz por avatar. Feita para o autor; use como modelo.","cena minha dentro do cenário","ext:HeyGen",0],
+["midia","W","create-ai-avatar","Cria um avatar de IA seu, que parece e soa como você, a partir de alguns minutos de gravação.","avatar meu para os vídeos","ext:HeyGen e ElevenLabs",0],
+["midia","W","digital-twin","Monta um gêmeo digital: fotos realistas suas, vídeos falando e falas na sua voz clonada.","meu gêmeo digital para anúncios","ext:HeyGen e ElevenLabs",0],
+["midia","W","elevenlabs-tts","Gera narração com a ElevenLabs a partir de roteiro, usando perfis de voz locais.","narração deste roteiro","ext:ElevenLabs",0],
+["midia","W","browser-video-recording","Vídeo em 4K e 60 quadros com cara de gravação de tela do navegador, com cursor e cliques naturais. Feita para o Codex.","grava a navegação pelo site","ext:Codex",0],
+["midia","W","codex-gpt-image-2-5-flare","Gera ou edita artes com o gerador de imagens do Codex: ornamentos em PNG transparente, emblemas e gráficos de interface.","emblema em PNG transparente","ext:Codex",0],
+["midia","W","unsplash-asset-images","Escolhe fotos de alta qualidade do Unsplash para avatares, retratos e fundos, com os endereços reais.","fotos de fundo para a abertura","ext:Unsplash",0],
+["midia","W","aura-asset-images","Busca imagens de banco do Aura Assets para mockups e marketing.","imagens abstratas para o mockup","ext:Aura",0],
+["captura","W","video-to-superprompt","Transforma um vídeo de referência num prompt muito detalhado para recriar ou se inspirar no design.","prompt a partir desta gravação de tela","",1],
+["captura","W","stitched-full-page-capture","Captura de tela da página inteira que funciona em páginas com carregamento tardio, animação e WebGL.","captura a página inteira do concorrente","",0],
+["captura","W","html-to-interaction-prompts","Converte uma página HTML em prompts reutilizáveis: um para cada seção, animação, botão ou efeito.","extrai os prompts desta página","",0],
+["captura","W","daily-ui-inspiration-capture","Captura diária e recorrente de inspiração de interface, em pacotes datados. Feita para o Codex.","captura de inspiração de hoje","ext:Codex",0],
+["captura","W","build-daily-inspiration-sites","Transforma a captura diária de inspiração em cinco páginas originais. Feita para o Codex.","cinco páginas a partir da captura de hoje","ext:Codex",0],
+["captura","W","generate-reference-inspired-brand-worlds","Gera vários mundos de campanha originais a partir de uma referência visual, controlando a proximidade sem copiar.","três mundos de campanha a partir desta referência","",0],
+["captura","W","audit-reference-originality","Compara um site com as referências que o inspiraram e avalia o risco de plágio.","o site ficou parecido demais com a referência?","",0],
+["captura","W","web-technique-to-skill","Transforma uma técnica visual que você já construiu numa skill reutilizável.","vira skill o efeito que fizemos","",0],
+["captura","W","article-prompts-to-skills","Converte um artigo, tutorial ou pacote de prompts em skills reutilizáveis.","transforma este tutorial em skills","",0],
+["captura","W","optimize-web-animations","Mede e otimiza o desempenho da página, com foco em animação, vazamento de memória e lentidão em sessão longa.","a página fica lenta depois de um tempo","",0],
+["captura","W","performance-profiling","Análise de desempenho de aplicativos Apple com Instruments, Xcode e MetricKit.","o aplicativo iOS está travando","ext:Xcode",0],
+["captura","W","iterate-until-verified","Laço de execução e verificação para qualquer tarefa grande, com subagentes e conferência do resultado.","repete até passar na verificação","",0],
+["captura","W","audit-verify-explain-grade-5","Audita o trabalho, verifica as afirmações com evidência e explica o resultado em linguagem simples.","confere e explica de forma simples","",0],
+["captura","W","publish-project-to-github","Empacota um projeto pronto num repositório do GitHub, com README, prévia e GitHub Pages. Publica: pede a sua aprovação.","publica o projeto no GitHub","",0],
+["captura","W","write-like-meng-on-x","Escreve posts para o X na voz do autor do repositório. Só serve como modelo para criar a sua.","modelo para escrever na minha voz","",0],
+["captura","W","x-bookmark-quote-posts","Transforma os itens salvos recentes do X em rascunhos de post com citação.","rascunhos a partir dos meus salvos","ext:conta do X",0],
+["captura","W","workflow-progress-screenshots","Mostra capturas de tela reais do trabalho em andamento: início, momento-chave e resultado.","manda capturas a cada mudança visual","",0],
+["captura","W","workflow-score-to-target","Dá nota de 0 a 10 por critérios e melhora rodada a rodada até chegar à nota pedida.","leva a página até nota 8","",0],
+["captura","W","workflow-ship-change","Entrega cada mudança com capturas, registro de versão e envio. Envia para o repositório: pede a sua aprovação.","entrega esta mudança com registro","",0],
+["captura","W","workflow-threads-manager","Supervisiona as outras sessões do Claude que trabalham no mesmo projeto.","como estão as outras sessões?","",0],
+["captura","W","release-threeui-demo","Lança um projeto interativo no ThreeUI, com vídeo 4K e rascunhos de post. Fluxo do autor; publica e pede aprovação.","prepara o lançamento da demonstração","ext:ThreeUI",0],
+["jogos","W","build-isometric-arpg","Constrói ou amplia um RPG de ação isométrico jogável em three.js ou React.","protótipo de jogo isométrico","",1],
+["jogos","W","build-mobile-threejs-games","Construir, ajustar e testar jogo three.js para celular: toque, controles e layouts.","adapta o jogo para o celular","",0],
+["jogos","W","author-game-levels","Cria ou revisa fases legíveis: rotas, colisão, zonas de encontro, marcos e objetivos.","desenha a fase 2","",0],
+["jogos","W","build-game-camera-controls","Câmeras de jogo: enquadramento isométrico, seguir o personagem, zoom, mira e tremor.","câmera que segue o jogador","",0],
+["jogos","W","build-game-inventory","Inventário, itens, equipamento, arrastar e soltar, salvamento e progressão.","inventário com arrastar e soltar","",0],
+["jogos","W","build-game-map-editor","Editor de mapas no navegador, ligado ao jogo em produção.","editor de fases no navegador","",0],
+["jogos","W","build-game-audio-feedback","Áudio responsivo: sons de ação, camadas de combate, estados de música e áudio espacial.","sons de chute e de gol","",0],
+["jogos","W","build-game-changelog","Registro de versões dentro do jogo, com versão contínua e navegação acessível.","tela de novidades no jogo","",0],
+["jogos","W","build-3d-character-selector","Tela de seleção de personagem 3D de corpo inteiro, com rotação e modelos preparados para o navegador.","tela de escolha de personagem","",0],
+["jogos","W","game-dev-character-model","Cria um modelo de personagem 3D realista, texturizado e com esqueleto, a partir de descrição ou referência.","modelo 3D do personagem a partir da ficha","",0],
+["jogos","W","build-rigged-game-assets","Personagens e monstros 3D com esqueleto, biblioteca de animações e contratos de colisão.","personagem com esqueleto e animações","",0],
+["jogos","W","build-hybrid-game-assets","Planeja o conjunto de assets do jogo: malhas importadas, geometria procedural e referências geradas por IA.","plano de assets do jogo","",0],
+["jogos","W","build-game-monster-system","Monstros com esqueleto para jogos de ação: contratos de asset, articulações e animação.","sistema de monstros","",0],
+["jogos","W","build-threejs-enemy-systems","Sistema de inimigos reutilizável e guiado por dados: arquétipos e conjuntos de golpes.","tipos de adversário configuráveis","",0],
+["jogos","W","tune-enemy-ai","Constrói, depura e equilibra a inteligência dos inimigos: perseguição, alvo, distância e escolha de ataque.","ajusta a inteligência do goleiro","",0],
+["jogos","W","design-action-combat","Combate de ação tático e legível: tempo de ataque, defesa, esquiva e fases de chefe.","sistema de disputa de bola","",0],
+["jogos","W","design-game-encounters","Encontros de jogo: arena, composição de inimigos, ritmo de entrada, objetivos e recompensas.","desenha a partida final","",0],
+["jogos","W","create-game-vfx","Efeitos visuais de jogo legíveis e leves: ataques, impactos, rastros e partículas.","efeito do chute forte","",0],
+["jogos","W","build-lens-raindrops","Gotas de chuva na lente da câmera, que distorcem a cena ao vivo.","chuva na lente durante o jogo","",0],
+["jogos","W","build-point-cloud-scan","Varreduras 3D animadas a partir da malha real: pulso de levantamento e revelação por pontos.","revela o estádio em pontos","",0],
+["jogos","W","build-ultra-realistic-game-interiors","Interiores fotorrealistas caminháveis em primeira pessoa.","vestiário caminhável realista","",0],
+["jogos","W","build-vesperfall-review-assets","Pares de revisão de assets para o jogo Vesperfall, do autor. Use como modelo de revisão de assets.","modelo de revisão dos assets","",0],
+["jogos","W","implement-fog-of-war","Névoa de guerra e percepção em jogos de ação: máscaras de visibilidade que respeitam paredes.","névoa que esconde o que o jogador não vê","",0],
+["jogos","W","optimize-threejs-games","Mede e melhora o desempenho de jogo three.js sem quebrar a jogabilidade.","o jogo cai de quadros no celular","",0],
+["jogos","W","test-playable-web-games","Testa um jogo de navegador de ponta a ponta, com evidência real do navegador.","testa o jogo do começo ao fim","",0],
+["jogos","W","ship-web-games","Empacota, publica e verifica um jogo de navegador. Publica: pede a sua aprovação.","prepara o jogo para publicar","",0],
+["jogos","W","game-dev-combat-animation","Constrói, corrige e revisa animações de combate para que tenham leitura de jogo profissional.","revisa a animação do chute","",0],
+["jogos","W","game-dev-combat-skill-polish","Dá nota de 0 a 10 às habilidades de combate, com juízes às cegas, e eleva as mais fracas.","dá nota aos golpes especiais","",0],
+["jogos","W","fire-smoke-skill-vfx","Efeitos de habilidade de fogo e fumaça como uma linguagem visual única.","chute de fogo","",0],
+["jogos","W","ice-frost-skill-vfx","Efeitos de habilidade de gelo, com geada que cresce como geada de verdade.","defesa de gelo","",0],
+["jogos","W","lightning-energy-skill-vfx","Efeitos de habilidade de energia e relâmpago para combate corpo a corpo.","drible relâmpago","",0],
+["jogos","W","water-crystal-skill-vfx","Efeitos de habilidade de água e cristal, com água transparente de verdade.","escudo de água","",0]
 ];
 
 const E = "estudio-marketing-social", S = "social-media-skills", M = "marketing-skills", P = "social-media-research-skills";
+const W = "mengto-skills", I = "impeccable", G = "gsap-skills", T = "threejs-skills";
 /* passo: [texto, [comandos], éPortão] */
 const FLOWS = [
 ["Cliente novo, do zero", "Primeiro trabalho para uma marca.", [
@@ -574,6 +830,25 @@ const FLOWS = [
   ["Lista de criadores", [P+":influencer-prospecting"]],
   ["Análise dos finalistas", [P+":creator-profile-teardown", P+":audience-research"]],
   ["Briefing, direitos de uso e identificação de publicidade", [S+":ugc-and-influencer"]]
+]],
+["Página com história por rolagem e 3D", "Site que apresenta personagens, produto ou marca em cenas conectadas.", [
+  ["O argumento da página, antes da forma", [M+":copywriting"]],
+  ["Direção e roteiro das cenas", [W+":scroll-world-storytelling", W+":build-threejs-scroll-worlds"]],
+  ["Portão: você aprova o roteiro de cenas", [], 1],
+  ["Base 3D: cena, modelos, luz e animação", [T+":threejs-fundamentals", T+":threejs-loaders", T+":threejs-lighting", T+":threejs-animation"]],
+  ["Coreografia ligada à rolagem", [G+":gsap-timeline", G+":gsap-scrolltrigger"]],
+  ["Interação com os personagens", [T+":threejs-interaction"]],
+  ["Crítica e acabamento visual", [I+":impeccable", W+":no-ai-design-slop"]],
+  ["Desempenho no celular", [T+":threejs-performance", T+":threejs-asset-pipeline", G+":gsap-performance"]],
+  ["Conversão e medição", [M+":cro", M+":analytics"]]
+]],
+["Vídeo curto montado por código", "Reels, TikTok ou Shorts sem gravar: a partir de um post, página ou vídeo que já existe.", [
+  ["Gancho e roteiro", [S+":hook-writer", S+":short-form-video-script"]],
+  ["Montagem das cenas em HTML", [W+":html-reel", W+":html-explainer-video"]],
+  ["Portão 5: você aprova a geração paga de voz", [], 1],
+  ["Narração", [W+":elevenlabs-tts"]],
+  ["Legenda e conferência de formato", [S+":caption-writer", S+":platform-specs-and-validation"]],
+  ["Portão 4: você aprova o vídeo", [], 1]
 ]]
 ];
 
@@ -593,7 +868,15 @@ const TIES = [
 ["Reaproveitamento", "SMS:cross-platform-repurposing, para conteúdo próprio", "PESQ:content-repurposing", "PESQ quando a matéria-prima é vídeo ou transcrição pública de outra conta."],
 ["E-mail", "MKT:emails, para sequências automáticas", "SMS:email-and-newsletter", "SMS para newsletter de criador e a ponte das redes para a lista."],
 ["Comunidade", "SMS:community-management, no dia a dia das redes", "MKT:community-marketing", "MKT para decidir se vale ter comunidade própria e onde hospedar."],
-["Estratégia de conteúdo", "SMS:social-strategy e SMS:content-pillars, para as redes", "MKT:content-strategy", "MKT para blog, SEO e conteúdo de site."]
+["Estratégia de conteúdo", "SMS:social-strategy e SMS:content-pillars, para as redes", "MKT:content-strategy", "MKT para blog, SEO e conteúdo de site."],
+["Animação com GSAP", "GSAP:gsap-core e as demais oficiais, para escrever o código certo", "MENG:gsap", "MENG:cinematic-gsap-lenis-motion-system quando quiser um sistema de movimento pronto, com direção de arte."],
+["Three.js", "THREE:threejs-fundamentals e as demais, para a API atual (r186)", "MENG:threejs", "As skills 3D de MENG são receitas de cenas e materiais prontos; use-as por cima da base técnica."],
+["História por rolagem", "MENG:build-threejs-scroll-worlds, quando a história é um mundo 3D contínuo", "MENG:scroll-world-storytelling", "A segunda quando a história parte de um texto e pode usar vídeo, imagens ou 3D. Para seções simples, MENG:cinematic-scroll-storytelling."],
+["Revisão de design", "IMP:impeccable, com os comandos critique e audit, para a revisão completa", "MENG:audit-ai-design-slop", "MENG quando a pergunta é só se a página tem cara de IA genérica."],
+["Página de venda", "MKT:cro e MKT:copywriting, para o que a página diz e por que converte", "MENG:landing-page", "MENG para o layout e o padrão visual. Use as duas: primeiro o argumento, depois a forma."],
+["Vídeo curto", "SMS:short-form-video-script, para vídeo gravado com gente", "MENG:html-reel", "MENG quando o vídeo é montado por código a partir de um post, página ou vídeo existente."],
+["Avatar de IA", "SMS:heygen, para escrever o roteiro e dirigir o avatar", "MENG:create-ai-avatar", "MENG para criar o seu próprio avatar e a voz clonada, do zero."],
+["Desempenho", "THREE:threejs-performance para a cena 3D e GSAP:gsap-performance para a animação", "MENG:optimize-web-animations", "MENG para medir a página inteira e achar vazamento de memória."]
 ];
 
 /* ---------- estado ---------- */
@@ -643,6 +926,7 @@ function renderPlugins() {
   $("#plugins").innerHTML = Object.entries(PLUGINS).map(([k, p]) =>
     `<div class="plug-row"><span class="dot d-${k}"></span><span class="name">${esc(p.label)}<span class="what">${esc(p.what)}</span><code>${esc(p.id)}</code></span><span class="n">${n[k]}</span></div>`).join("");
   $("#total-skills").textContent = items.length;
+  $("#total-plugins").textContent = Object.keys(PLUGINS).length;
   $("#ct-skills").textContent = items.length;
   $("#ct-fluxos").textContent = FLOWS.length;
   $("#ct-desempate").textContent = TIES.length;
@@ -653,7 +937,7 @@ function matches(i) {
   if (state.plugin !== "all" && i.p !== state.plugin) return false;
   if (state.favOnly && !favs.has(i.key)) return false;
   if (state.avail === "now" && i.r) return false;
-  if (state.avail === "need" && !(i.r === "sc" || i.r === "woop")) return false;
+  if (state.avail === "need" && !(i.r === "sc" || i.r === "woop" || i.r === "bin")) return false;
   if (state.avail === "ext" && !i.r.startsWith("ext:")) return false;
   if (state.q) { for (const t of norm(state.q).split(/\s+/)) if (t && !i.hay.includes(t)) return false; }
   return true;
@@ -670,6 +954,7 @@ function pills(i) {
   if (i.s) h += `<span class="pill start">comece por esta</span>`;
   if (i.r === "sc") h += `<span class="pill need">pede chave ScrapeCreators</span>`;
   else if (i.r === "woop") h += `<span class="pill need">publicar pede WoopSocial</span>`;
+  else if (i.r === "bin") h += `<span class="pill need">baixa um programa no 1º uso</span>`;
   else if (i.r.startsWith("ext:")) h += `<span class="pill ext">usa ${esc(i.r.slice(4))}</span>`;
   return h;
 }
@@ -692,14 +977,22 @@ function render() {
   if (!shown.length) {
     list.innerHTML = `<div class="empty">Nenhuma skill com esse filtro.<br><button id="clear2">Limpar busca e filtros</button></div>`;
   } else {
+    let lastTrack = -1;
     list.innerHTML = GROUPS.filter(g => by[g[0]]).map(g => {
       const rows = by[g[0]].slice().sort((a, b) => (b.s - a.s));
-      return `<section class="group" id="g-${g[0]}"><header><h2>${esc(g[1])}</h2><span class="gct">${rows.length} ${rows.length === 1 ? "skill" : "skills"}</span><p class="hint">${esc(g[2])}</p></header><div class="rows">${rows.map(rowHtml).join("")}</div></section>`;
+      const tr = trackOf(g[0]);
+      const th = tr !== lastTrack ? `<h2 class="track-h">${esc(TRACK_NAMES[tr])}</h2>` : "";
+      lastTrack = tr;
+      return th + `<section class="group" id="g-${g[0]}"><header><h2>${esc(g[1])}</h2><span class="gct">${rows.length} ${rows.length === 1 ? "skill" : "skills"}</span><p class="hint">${esc(g[2])}</p></header><div class="rows">${rows.map(rowHtml).join("")}</div></section>`;
     }).join("");
   }
+  let railTrack = -1;
   $("#rail").innerHTML = GROUPS.map(g => {
     const n = (by[g[0]] || []).length;
-    return `<button data-g="${g[0]}" ${n ? "" : "disabled"}><span>${esc(g[1])}</span><span>${n}</span></button>`;
+    const rt = trackOf(g[0]);
+    const rh = rt !== railTrack ? `<div class="rail-h">${esc(TRACK_NAMES[rt])}</div>` : "";
+    railTrack = rt;
+    return rh + `<button data-g="${g[0]}" ${n ? "" : "disabled"}><span>${esc(g[1])}</span><span>${n}</span></button>`;
   }).join("");
   const filtered = state.q || state.plugin !== "all" || state.avail !== "all" || state.favOnly;
   $("#count").innerHTML = `Mostrando ${shown.length} de ${items.length} skills` + (filtered ? `<button id="clear">limpar filtros</button>` : "");
